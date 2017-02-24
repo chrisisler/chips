@@ -28,5 +28,5 @@ module.exports = function _curry2(fn) {
             default: // case 2:
                 return fn(a1, a2);
         }
-    }
+    };
 }

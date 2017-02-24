@@ -1,5 +1,6 @@
 var _allPass = require('./_allPass');
 var _curry2 = require('./curry/_curry2');
+var _is = require('./_is');
 
 /**
  * Returns true if each value satisfies each function.
@@ -18,7 +19,7 @@ module.exports = _curry2(function _majorityPass(predicates, values) {
     var len = values.length;
     var majorityLen = Math.ceil(len / 2);
 
-    if (Object.prototype.toString.call(predicates) === '[object Function]') {
+    if (_is('Function', predicates)) {
         predicates = [ predicates ];
     }
 

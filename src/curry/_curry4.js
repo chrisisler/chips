@@ -43,5 +43,5 @@ module.exports = function _curry4(fn) {
             default: // case 4:
                 return fn(a1, a2, a3, a4);
         }
-    }
+    };
 }

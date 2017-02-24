@@ -50,5 +50,5 @@ function _curry5(fn) {
             default: // case 5:
                 return fn(a1, a2, a3, a4, a5);
         }
-    }
+    };
 }
