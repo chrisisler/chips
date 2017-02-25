@@ -1,5 +1,3 @@
-var _curry1 = require('./_curry1');
-
 /**
  * Returns a new function that when called with:
  * 0 args: returns 2-arity function (expects 2 more args).
@@ -22,9 +20,9 @@ module.exports = function _curry2(fn) {
             case 0:
                 return arity2;
             case 1:
-                return _curry1(function(_a2) {
+                return function(_a2) {
                     return fn(a1, _a2);
-                });
+                }
             default: // case 2:
                 return fn(a1, a2);
         }

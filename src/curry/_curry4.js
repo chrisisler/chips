@@ -1,4 +1,3 @@
-var _curry1 = require('./_curry1');
 var _curry2 = require('./_curry2');
 var _curry3 = require('./_curry3');
 
@@ -37,9 +36,9 @@ module.exports = function _curry4(fn) {
                     return fn(a1, a2, _a3, _a4);
                 });
             case 3:
-                return _curry1(function(_a4) {
+                return function(_a4) {
                     return fn(a1, a2, a3, _a4);
-                });
+                }
             default: // case 4:
                 return fn(a1, a2, a3, a4);
         }

@@ -1,7 +1,7 @@
-var _curry1 = require('./curry/_curry1');
 var _has = require('./_has');
+var _is = require('./_is');
 
-// Based on Mozilla Developer Network Object.assign polyfill
+// This is the Mozilla Developer Network Object.assign polyfill
 // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
 
 /**
@@ -12,10 +12,7 @@ var _has = require('./_has');
  * @param {Object} target - Obj to assign new values to (and clone).
  * @returns {Object}
  */
-module.exports = _curry1(function _assign(target) {
-    if (typeof Object.assign === 'function') {
-        return Object.assign.apply(this, arguments);
-    }
+module.exports = _is('Function', Object.assign) ? Object.assign : function _assign(target) {
     if (target == null) {
         throw new TypeError('Cannot convert undefined or null to object');
     }
@@ -34,4 +31,4 @@ module.exports = _curry1(function _assign(target) {
         index += 1;
     }
     return result;
-});
+}

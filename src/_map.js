@@ -6,7 +6,6 @@ var _has = require('./_has');
  * Given a function, <fn>, and a data structure to map, <mappable>,
  * return the results of applying <fn> to each value in the <mappable>.
  *
- * @sig (x -> y) -> x -> y
  * @example map(x => x + 1, { a: 1 }); //=> { a: 2 }
  * @example map(x => x * 2, [ 1, 2 ]); //=> [ 2, 4 ]
  * @example map(x => x.toUpperCase(), 'foo'); //=> 'FOO'

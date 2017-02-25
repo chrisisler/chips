@@ -1,13 +1,13 @@
 var _curry2 = require('./curry/_curry2');
 var _is = require('./_is');
 var _has = require('./_has');
+var _toStr = require('./_toStr');
 
 /**
  * Produces a new "filterable" (array, object, or string) by applying the
  * predicate function to each item in the filterable. If the item passes the
  * test supplied by the predicate, the item is retained, otherwise it is rejected.
  *
- * @sig Filterable f => (x -> Boolean) -> f x -> f x
  * @see Array.prototype.reduce and R.reduce
  * @example filter(x => x === 1, { a: 1, b: 2 }); //=> { a: 1 }
  * @example filter(x => Boolean(x), [ 'foo', '', 'bar' ]); //=> [ 'foo', 'bar' ]
@@ -17,12 +17,13 @@ var _has = require('./_has');
  * @returns {Array|Object|String} - New filterable with elements that pass the test.
  */
 module.exports = _curry2(function _filter(predicate, filterable) {
-    switch (Object.prototype.toString.call(filterable)) {
+    switch (_toStr(filterable)) {
         case '[object Object]': return _filterObj(predicate, filterable);
         case '[object String]': return _filterStr(predicate, filterable);
         case '[object Array]' : return _filterList(predicate, filterable);
         default:
             return filterable;
+            // TODO: Maybe throw new error here?
     }
 });
 
@@ -39,7 +40,7 @@ function _filterObj(predicate, obj) {
 function _filterStr(predicate, str) {
     var index = 0, result = '', len = str.length;
     while (index < len) {
-        if (fn(str[index])) {
+        if (preddicate(str[index])) {
             result += str[index];
         }
     }

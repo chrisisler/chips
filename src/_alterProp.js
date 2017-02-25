@@ -2,7 +2,6 @@ var _curry3 = require('./curry/_curry3');
 var _assign = require('./_assign');
 
 /**
- * @sig String -> (* -> *) -> Object -> Object
  * @example _alterProp('name', toUpper, { name: 'rufus' }); //=> { name: 'RUFUS' }
  * @param {String} prop - Property of object to alter.
  * @param {Function} fn - Applied to obj[prop].

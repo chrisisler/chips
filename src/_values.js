@@ -1,11 +1,16 @@
-var _curry1 = require('./curry/_curry1');
+var _has = require('./_has');
 
-module.exports = _curry1(function _values(obj) {
+/**
+ * @example _values({name: 'bob', age: 44, job: 'chef'}); //=> ['bob', 44, 'chef']
+ * @param {Object} obj
+ * @returns {Array} - List of own values from the given object.
+ */
+module.exports = function _values(obj) {
     var values = [];
     for (var prop in obj) {
-        if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+        if (_has(prop, obj)) {
             values[values.length] = obj[prop];
         }
     }
     return values;
-});
+}
