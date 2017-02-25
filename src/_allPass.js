@@ -19,4 +19,3 @@ module.exports = _curry2(function _allPass(predicates, value) {
     }
     return true;
 });
-

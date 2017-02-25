@@ -9,14 +9,10 @@ Composable functionality written for self-improvement.
 Nothing crazy or new. Chips are pure, curried functions employing immutability.
 
 ### Roadmap
-* Remove @sig signatures
 * Allow `reduce` to properly operate on objects
-* remove `curry1`
+* Implement `map` by using `reduce`
 * Use eslint
-* Write tests for
-    * `allPass`
-    * `alterProp`
-    * `assign`
+* Write tests for the following
     * `filter`
     * `flatten`
     * `has`
@@ -27,10 +23,7 @@ Nothing crazy or new. Chips are pure, curried functions employing immutability.
     * `pipe`
     * `prop`
     * `reduce`
-    * `toStr`
     * `values`
 
-### Don't use Chips
-If you can't tell, Chips is a poor man's Ramda. Like, _dirt_ poor.
-If you want actual functionality, just use a real library with 675 zillion stars.
-Seriously, how did you even get here?
+### Thank you Ramda
+Reading Ramda source has taught me many tricks, so thanks to those guys.
