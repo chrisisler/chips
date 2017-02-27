@@ -9,10 +9,8 @@ Composable functionality written for self-improvement.
 Nothing crazy or new. Chips are pure, curried functions employing immutability.
 
 ### Roadmap
-* implement `filter` by using `reduce`
 * Use eslint
 * Write tests for the following
-    * `filter`
     * `flatten`
     * `has`
     * `is`

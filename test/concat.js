@@ -5,21 +5,14 @@ describe('concat', function() {
     var expectedArray = [ 1, 2 ];
     var expectedStr = 'dogs and cats';
 
-    it('merges two arrays', function() {
+    it('returns the result of merging two arrays', function() {
         assert.deepEqual(
             C.concat([ 1 ], [ 2 ]),
             expectedArray
         );
     });
 
-    it('does not merge empty arrays', function() {
-        assert.deepEqual(
-            C.concat([ ], expectedArray),
-            expectedArray
-        );
-    });
-
-    it('merges two strings', function() {
+    it('returns the result of merging two strings', function() {
         assert.strictEqual(
             C.concat('dogs', ' and cats'),
             expectedStr
@@ -30,6 +23,13 @@ describe('concat', function() {
         assert.strictEqual(
             C.concat('', expectedStr),
             expectedStr
+        );
+    });
+
+    it('does not merge empty arrays', function() {
+        assert.deepEqual(
+            C.concat([ ], expectedArray),
+            expectedArray
         );
     });
 

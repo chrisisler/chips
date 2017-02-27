@@ -1,59 +1,37 @@
 var _curry2 = require('./curry/_curry2');
-var _is = require('./_is');
-var _has = require('./_has');
 var _toStr = require('./_toStr');
+var _concat = require('./_concat');
+var _reduce = require('./_reduce');
+var _assign = require('./_assign');
 
 /**
- * Produces a new "filterable" (array, object, or string) by applying the
- * predicate function to each item in the filterable. If the item passes the
- * test supplied by the predicate, the item is retained, otherwise it is rejected.
+ * Returns a new "filterable" containing values which satisfy the predicate.
  *
- * @see Array.prototype.reduce and R.reduce
  * @example filter(x => x === 1, { a: 1, b: 2 }); //=> { a: 1 }
- * @example filter(x => Boolean(x), [ 'foo', '', 'bar' ]); //=> [ 'foo', 'bar' ]
- * @example filter(x => x !== 'b', 'abc'); //=> 'ac'
- * @param {Function} predicate - Per item in <filterable>, return true/false to retain/reject.
- * @param {Array|Object|String} filterable - Data that can be looped/iterated over.
- * @returns {Array|Object|String} - New filterable with elements that pass the test.
+ * @example filter(x => x >= 3, [ 1, 2, 3 ]); //=> [ 3 ]
+ * @example filter(x => x === x.toUpperCase(), 'FooBar'); //=> 'FB'
+ * @param {Function} predicate - Returns true/false to retain/reject each value.
+ * @param {Array|Object|String} filterable
+ * @returns {Array|Object|String}
  */
 module.exports = _curry2(function _filter(predicate, filterable) {
     switch (_toStr(filterable)) {
-        case '[object Object]': return _filterObj(predicate, filterable);
-        case '[object String]': return _filterStr(predicate, filterable);
-        case '[object Array]' : return _filterList(predicate, filterable);
+        case '[object Array]': return _reduce(function(accumList, element) {
+            return predicate(element) ? _concat(accumList, [ element ]) : accumList;
+        }, [], filterable);
+        case '[object Object]': return _reduce(function(accumObj, prop) {
+            return predicate(filterable[prop]) ? _assign(accumObj, newObj(filterable, prop)) : accumObj;
+        }, {}, Object.keys(filterable));
+        case '[object String]': return _reduce(function(accumStr, character) {
+            return predicate(character) ? accumStr += character : accumStr;
+        }, '', filterable);
         default:
-            return filterable;
-            // TODO: Maybe throw new error here?
+            throw new TypeError('Unsupported type for filterable.');
     }
 });
 
-function _filterObj(predicate, obj) {
-    var result = {};
-    for (var prop in obj) {
-        if (_has(prop, obj) && predicate(obj[prop])) {
-            result[prop] = obj[prop];
-        }
-    }
-    return result;
-}
-
-function _filterStr(predicate, str) {
-    var index = 0, result = '', len = str.length;
-    while (index < len) {
-        if (preddicate(str[index])) {
-            result += str[index];
-        }
-    }
-    return result;
-}
-
-function _filterList(predicate, list) {
-    var result = [], index = 0, len = list.length;
-    while (index < len) {
-        if (predicate(list[index])) {
-            result[index] = list[index];
-        }
-        index += 1;
-    }
-    return result;
+function newObj(obj, prop) {
+    var out = {};
+    out[prop] = obj[prop];
+    return out;
 }

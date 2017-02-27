@@ -37,6 +37,13 @@ describe('allPass', function() {
         );
     });
 
+    it('returns true for empty predicate list', function() {
+        assert.strictEqual(
+            C.allPass([], 'foo'),
+            true
+        );
+    });
+
     it('is curried', function() {
         var everyPredicate = C.allPass([greaterThan5, lessThan10, equals8]);
 
@@ -47,13 +54,6 @@ describe('allPass', function() {
         assert.strictEqual(
             everyPredicate(Infinity),
             false
-        );
-    });
-
-    it('returns true for empty predicate list', function() {
-        assert.strictEqual(
-            C.allPass([], 'foo'),
-            true
         );
     });
 });

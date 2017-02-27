@@ -15,7 +15,7 @@ var _concat = require('./_concat');
  * @param {Array|Object|String|Function} mappable
  * @returns {Array|Object|String|Function}
  */
-var _map = _curry2(function _map(fn, mappable) {
+module.exports = _curry2(function _map(fn, mappable) {
     switch(_toStr(mappable)) {
         case '[object Array]': return _reduce(function(accumList, element) {
             return _concat(accumList, [ fn(element) ]);
@@ -31,6 +31,6 @@ var _map = _curry2(function _map(fn, mappable) {
             return mappable.call(this, fn.apply(this, arguments));
         };
         default:
-            throw new TypeError('Unsupported type for <mappable>.');
+            throw new TypeError('Unsupported type for mappable.');
     }
 });
