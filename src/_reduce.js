@@ -3,30 +3,24 @@ var _values = require('./_values');
 var _is = require('./_is');
 
 /**
- * TODO: Allow reduce to properly operate on objects.
- *
  * Applies an iterator function against a cumulative value and each value
  * of the data structure (from left-to-right) to reduce it to a single value.
  *
  * @example reduce((acc, x) => acc + x, 0, [ 1, 2, 3 ]); //=> 6
  * @example reduce((acc, x) => acc - x, 0, { a: 1, b: 2 }); //=> -3
+ *
  * @see Array.prototype.reduce and R.reduce
  * @param {Function} reducer - Applied to each mappable value in <reducable>.
  * @param {*} accumulator - Accumulated value previously returned from <reducer>.
- * @param {Array|Object} reducable - The data structure to reduce.
+ * @param {*} reducable - The data structure to reduce.
  * @returns {*} - Value that results from the reduction.
  */
 module.exports = _curry3(function _reduce(reducer, accumulator, reducable) {
-    return _is('Object', reducable)
-        ? internalReduce(reducer, accumulator, _values(reducable))
-        : internalReduce(reducer, accumulator, reducable);
-});
-
-function internalReduce(reducer, accumulator, reducable) {
     var index = 0, len = reducable.length;
     while (index < len) {
         accumulator = reducer(accumulator, reducable[index]);
         index += 1;
     }
     return accumulator;
-}
+});
+

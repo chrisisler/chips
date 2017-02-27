@@ -1,52 +1,36 @@
 var _curry2 = require('./curry/_curry2');
-var _is = require('./_is');
-var _has = require('./_has');
+var _toStr = require('./_toStr');
+var _reduce = require('./_reduce');
+var _concat = require('./_concat');
 
 /**
- * Given a function, <fn>, and a data structure to map, <mappable>,
- * return the results of applying <fn> to each value in the <mappable>.
+ * Return the result of mapping from one data structure to another.
  *
  * @example map(x => x + 1, { a: 1 }); //=> { a: 2 }
  * @example map(x => x * 2, [ 1, 2 ]); //=> [ 2, 4 ]
- * @example map(x => x.toUpperCase(), 'foo'); //=> 'FOO'
- * @param {Function} fn - Invoked for each item in the data structure.
- * @param {Array|Object|String} mappable - A container of values.
- * @returns {Array|Object|String} - Another mappable container of values.
+ * @example map(toUpper, 'foo'); //=> 'FOO'
+ * @example map(x => x * 2, y => y + 1)(3); //=> 7
+ *
+ * @param {Function} fn - Applied to the mappable.
+ * @param {Array|Object|String|Function} mappable
+ * @returns {Array|Object|String|Function}
  */
-module.exports = _curry2(function _map(fn, mappable) {
-    if (_is('Object', mappable)) {
-        return _mapObj(fn, mappable);
-    } else if (_is('String', mappable)) {
-        return _mapStr(fn, mappable);
-    } else {
-        return _mapList(fn, mappable)
+var _map = _curry2(function _map(fn, mappable) {
+    switch(_toStr(mappable)) {
+        case '[object Array]': return _reduce(function(accumList, element) {
+            return _concat(accumList, [ fn(element) ]);
+        }, [], mappable);
+        case '[object Object]': return _reduce(function(accumObj, prop) {
+            accumObj[prop] = fn(mappable[prop]);
+            return accumObj;
+        }, {}, Object.keys(mappable));
+        case '[object String]': return _reduce(function(accumStr, character) {
+            return _concat(accumStr, fn(character));
+        }, '', mappable);
+        case '[object Function]': return function() { // Pipe the functions.
+            return mappable.call(this, fn.apply(this, arguments));
+        };
+        default:
+            throw new TypeError('Unsupported type for <mappable>.');
     }
 });
-
-function _mapObj(fn, obj) {
-    var result = {};
-    for (var prop in obj) {
-        if (_has(prop, obj)) {
-            result[prop] = fn(obj[prop]);
-        }
-    }
-    return result;
-}
-
-function _mapStr(fn, str) {
-    var result = '', index = 0, len = str.length;
-    while (index < len) {
-        result += fn(str[index]);
-        index += 1;
-    }
-    return result;
-}
-
-function _mapList(fn, list) {
-    var len = list.length, index = 0, result = Array(len);
-    while (index < len) {
-        result[index] = fn(list[index]);
-        index += 1;
-    }
-    return result;
-}
