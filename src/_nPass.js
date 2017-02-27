@@ -3,6 +3,8 @@ var _filter = require('./_filter');
 var _curry3 = require('./curry/_curry3');
 
 /**
+ * TODO: Re-write these docs.
+ *
  * _nPass() executes the <predicate> function once for each element present
  * in the <filterable>. Returns true if the predicate returns true <N> or more
  * times, and false otherwise.
@@ -12,7 +14,7 @@ var _curry3 = require('./curry/_curry3');
  * @example _nPass(3, x => x % 2 === 1, [ 1, 2, 3, 4, 5 ]); //=> true
  * @param {Number} N - Number of times the <predicate> must return true.
  * @param {Function} predicate - Produces a Boolean per <filterable> element.
- * @param {x} filterable - A data type that can be looped over (any "mappable").
+ * @param {*} filterable - A data type that can be looped over (any "mappable").
  * @returns {Boolean} - If <predicate> returned truthy N times.
  */
 module.exports = _curry3(function _nPass(N, predicate, filterable) {

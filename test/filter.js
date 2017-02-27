@@ -15,6 +15,12 @@ describe('filter', function() {
                 [ 3 ]
             );
         });
+        it('returns an empty list if no element satisfies the predicate', function() {
+            assert.deepEqual(
+                C.filter(equalsF, list),
+                []
+            );
+        });
     });
 
     describe('works on objects', function() {
@@ -24,6 +30,12 @@ describe('filter', function() {
                 { c: 3 }
             );
         });
+        it('returns an empty object if no prop satisfies the predicate', function() {
+            assert.deepEqual(
+                C.filter(equalsF, obj),
+                {}
+            );
+        });
     });
 
     describe('works on strings', function() {
@@ -31,6 +43,12 @@ describe('filter', function() {
             assert.deepEqual(
                 C.filter(equalsF, str),
                 'f'
+            );
+        });
+        it('returns an empty string if no character satisfies the predicate', function() {
+            assert.deepEqual(
+                C.filter(greaterThanTwo, str),
+                ''
             );
         });
     });

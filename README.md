@@ -1,19 +1,13 @@
 # chips
-Composable functionality written for self-improvement.
+Pure, composable, curried functions written for self-improvement.
 
 ## Why?
 - To learn by writing common functions like map, flatten, etc., and others like majorityPass.
-- For personal use and self-education.
+- For personal use.
 
-## What's it do?
-Nothing crazy or new. Chips are pure, curried functions employing immutability.
-
-### Roadmap
+## Roadmap
 * Use eslint
 * Write tests for the following
-    * `flatten`
-    * `has`
-    * `is`
     * `majorityPass`
     * `map`
     * `nPass`

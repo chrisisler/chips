@@ -1,6 +1,7 @@
 var _is = require('./_is');
 var _curry2 = require('./curry/_curry2');
 var _toStr = require('./_toStr');
+var _reduce = require('./_reduce');
 
 /**
  * Merges the two given items (in the order they're supplied).
@@ -9,28 +10,14 @@ var _toStr = require('./_toStr');
  * @example concat('dogs', ' and cats'); //=> 'dogs and cats'
  * @param {Array|String} a
  * @param {Array|String} b
- * @returns {Array|String}
+ * @returns {Array|String} - The concatenated result.
  */
 module.exports = _curry2(function _concat(a, b) {
     if (_toStr(a) !== _toStr(b)) {
-        throw new TypeError('Cannot concat differing types')
+        throw new TypeError('Both arguments must be of the same type.');
     }
-    if (_is('String', a)) {
-        return a += b;
-    }
-    var lenA = a.length,
-        lenB = b.length,
-        result = [],
-        index = 0;
-    while (index < lenA) {
-        result[index] = a[index];
-        index += 1;
-    }
-    index = 0;
-
-    while (index < lenB) {
-        result[lenA + index] = b[index];
-        index += 1;
-    }
-    return result;
+    return _is('String', a) ? a += b : _reduce(function(accumList, elem) {
+        accumList[accumList.length] = elem;
+        return accumList;
+    }, a, b);
 });

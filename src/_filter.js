@@ -2,7 +2,6 @@ var _curry2 = require('./curry/_curry2');
 var _toStr = require('./_toStr');
 var _concat = require('./_concat');
 var _reduce = require('./_reduce');
-var _assign = require('./_assign');
 
 /**
  * Returns a new "filterable" containing values which satisfy the predicate.
@@ -20,7 +19,10 @@ module.exports = _curry2(function _filter(predicate, filterable) {
             return predicate(element) ? _concat(accumList, [ element ]) : accumList;
         }, [], filterable);
         case '[object Object]': return _reduce(function(accumObj, prop) {
-            return predicate(filterable[prop]) ? _assign(accumObj, newObj(filterable, prop)) : accumObj;
+            if (predicate(filterable[prop])) {
+                accumObj[prop] = filterable[prop];
+            }
+            return accumObj;
         }, {}, Object.keys(filterable));
         case '[object String]': return _reduce(function(accumStr, character) {
             return predicate(character) ? accumStr += character : accumStr;
@@ -29,9 +31,3 @@ module.exports = _curry2(function _filter(predicate, filterable) {
             throw new TypeError('Unsupported type for filterable.');
     }
 });
-
-function newObj(obj, prop) {
-    var out = {};
-    out[prop] = obj[prop];
-    return out;
-}
