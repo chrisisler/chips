@@ -8,8 +8,6 @@ Pure, composable, curried functions written for self-improvement.
 ## Roadmap
 * Use eslint
 * Write tests for the following
-    * `majorityPass`
-    * `map`
     * `nPass`
     * `pipe`
     * `prop`

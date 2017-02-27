@@ -14,7 +14,7 @@ var _is = require('./_is');
  */
 module.exports = _curry2(function _majorityPass(predicates, values) {
     var index = 0;
-    var numElementsPass = 0;
+    var numValuesPass = 0;
     var len = values.length;
     var majorityLen = Math.ceil(len / 2);
 
@@ -24,9 +24,9 @@ module.exports = _curry2(function _majorityPass(predicates, values) {
 
     while (index < len) {
         if (_allPass(predicates, values[index])) {
-            numElementsPass += 1;
+            numValuesPass += 1;
         }
-        if (numElementsPass === majorityLen) {
+        if (numValuesPass === majorityLen) {
             return true;
         }
         index += 1;
