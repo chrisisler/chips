@@ -24,7 +24,7 @@ describe('filter', function() {
     });
 
     describe('works on objects', function() {
-        it('returns a new object containg props which satisfy the predicate', function() {
+        it('returns a new object containing props which satisfy the predicate', function() {
             assert.deepEqual(
                 C.filter(greaterThanTwo, obj),
                 { c: 3 }
@@ -39,7 +39,7 @@ describe('filter', function() {
     });
 
     describe('works on strings', function() {
-        it('returns a new string containg characters which satisfy the predicate', function() {
+        it('returns a new string containing characters which satisfy the predicate', function() {
             assert.deepEqual(
                 C.filter(equalsF, str),
                 'f'

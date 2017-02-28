@@ -7,12 +7,6 @@ Pure, composable, curried functions written for self-improvement.
 
 ## Roadmap
 * Use eslint
-* Write tests for the following
-    * `nPass`
-    * `pipe`
-    * `prop`
-    * `reduce`
-    * `values`
 
 ### Thank you Ramda
 Reading Ramda source has taught me many tricks, so thanks to those guys.
