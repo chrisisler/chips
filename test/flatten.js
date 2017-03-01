@@ -15,6 +15,6 @@ describe('flatten', function() {
 
     it('correctly flattens empty nested lists', function() {
         assert.deepEqual(C.flatten([[]]), []);
-        assert.deepEqual(C.flatten([[[], [[]]], []]), [])
+        assert.deepEqual(C.flatten([[[], [[]]], []]), []);
     });
 });

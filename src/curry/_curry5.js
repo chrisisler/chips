@@ -25,7 +25,7 @@ var _curry4 = require('./_curry4');
  * @param {Function} fn - Function to curry.
  * @returns {Function} - <fn> curried.
  */
-function _curry5(fn) {
+module.exports = function _curry5(fn) {
     return function arity5(a1, a2, a3, a4, a5) {
         switch (arguments.length) {
             case 0:
@@ -45,9 +45,9 @@ function _curry5(fn) {
             case 4:
                 return function(_a5) {
                     return fn(a1, a2, a3, a4, _a5);
-                }
+                };
             default: // case 5:
                 return fn(a1, a2, a3, a4, a5);
         }
     };
-}
+};

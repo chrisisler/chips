@@ -7,4 +7,4 @@
  */
 module.exports = function _toStr(x) {
     return Object.prototype.toString.call(x);
-}
+};

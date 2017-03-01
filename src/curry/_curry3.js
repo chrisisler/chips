@@ -31,9 +31,9 @@ module.exports = function _curry3(fn) {
             case 2:
                 return function(_a3) {
                     return fn(a1, a2, _a3);
-                }
+                };
             default: // case 3:
                 return fn(a1, a2, a3);
         }
     };
-}
+};

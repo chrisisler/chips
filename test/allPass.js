@@ -2,9 +2,9 @@ var assert = require('assert');
 var C = require('../index');
 
 describe('allPass', function() {
-    var greaterThan5 = function(x) { return x > 5; }
-    var lessThan10 = function(x) { return x < 10; }
-    var equals8 = function(x) { return x === 8; }
+    var greaterThan5 = function(x) { return x > 5; };
+    var lessThan10 = function(x) { return x < 10; };
+    var equals8 = function(x) { return x === 8; };
     var expected = 8;
 
     it('returns true if value satisifies each predicate', function() {

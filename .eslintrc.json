@@ -1,0 +1,72 @@
+{
+    "env": {
+        "browser": true,
+        "mocha": true,
+        "node": true,
+        "amd": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+        "no-eval": 2,
+        "no-plusplus": 2,
+        "no-undef": 2,
+        "brace-style": [
+            2,
+            "1tbs",
+            {
+                "allowSingleLine": true
+            }
+        ],
+        "no-mixed-spaces-and-tabs": 2,
+        "space-before-function-paren": [
+            2,
+            "never"
+        ],
+        "spaced-comment": [
+            2,
+            "always"
+        ],
+        "one-var": [
+            2,
+            {
+                "initialized": "never",
+                "uninitialized": "always"
+            }
+        ],
+        "yoda": [
+            2,
+            "never"
+        ],
+        "no-unused-vars": [
+            2,
+            {
+                "vars": "all",
+                "args": "none"
+            }
+        ],
+        "no-trailing-spaces": 2,
+        "eol-last": 2,
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-dupe-args": 2,
+        "no-dupe-keys": 2,
+        "no-unreachable": 2
+    }
+}

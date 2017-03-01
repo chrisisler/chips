@@ -9,8 +9,8 @@ var _curry2 = require('./curry/_curry2');
  * @returns Boolean
  */
 module.exports = _curry2(function _allPass(predicates, value) {
-    var index = 0,
-        len = predicates.length;
+    var index = 0;
+    var len = predicates.length;
     while (index < len) {
         if (!predicates[index].call(this, value)) {
             return false;

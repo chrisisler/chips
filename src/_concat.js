@@ -1,7 +1,5 @@
-var _is = require('./_is');
 var _curry2 = require('./curry/_curry2');
 var _toStr = require('./_toStr');
-var _reduce = require('./_reduce');
 
 /**
  * Merges the two given items (in the order they're supplied).
@@ -16,8 +14,5 @@ module.exports = _curry2(function _concat(a, b) {
     if (_toStr(a) !== _toStr(b)) {
         throw new TypeError('Both arguments must be of the same type.');
     }
-    return _is('String', a) ? a += b : _reduce(function(accumList, elem) {
-        accumList[accumList.length] = elem;
-        return accumList;
-    }, a, b);
+    return a.concat(b);
 });

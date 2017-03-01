@@ -2,9 +2,9 @@ var assert = require('assert');
 var C = require('../index');
 
 describe('alterProp', function() {
-    var add1 = function(x) { return x + 1; }
-    var square = function(x) { return x * x; }
-    var toUpper = function(s) { return s.toUpperCase(); }
+    var add1 = function(x) { return x + 1; };
+    var square = function(x) { return x * x; };
+    var toUpper = function(s) { return s.toUpperCase(); };
 
     var obj = { a: 1, b: 2 };
 
@@ -43,7 +43,7 @@ describe('alterProp', function() {
 
     it('throws when applied to an empty object', function() {
         assert.throws(
-            function() { C.alterProp('x', add1, {}) },
+            function() { C.alterProp('x', add1, {}); },
             Error
         );
     });

@@ -1,6 +1,5 @@
 var _has = require('./_has');
 var _reduce = require('./_reduce');
-var _concat = require('./_concat');
 
 /**
  * Returns a list of the own properties of the given object.

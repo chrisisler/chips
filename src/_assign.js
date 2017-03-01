@@ -16,12 +16,12 @@ module.exports = _is('Function', Object.assign) ? Object.assign : function _assi
     if (target == null) {
         throw new TypeError('Cannot convert undefined or null to object');
     }
-    var result = Object(target),
-        index = 1,
-        len = arguments.length;
+    var result = Object(target);
+    var index = 1;
+    var len = arguments.length;
     while (index < len) {
         var next = arguments[index];
-        if (source != null) {
+        if (next != null) {
             for (var prop in next) {
                 if (_has(prop, next)) {
                     result[prop] = next[prop];
@@ -31,4 +31,4 @@ module.exports = _is('Function', Object.assign) ? Object.assign : function _assi
         index += 1;
     }
     return result;
-}
+};

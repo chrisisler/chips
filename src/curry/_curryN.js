@@ -14,15 +14,12 @@ var _curry5 = require('./_curry5');
  */
 module.exports = function _curryN(N, fn) {
     switch (N) {
-        case 1: return function() { return fn.apply(this, arguments); }; // Wraps fn.
+        case 1: return function() { return fn.apply(this, arguments); };
         case 2: return _curry2(fn);
         case 3: return _curry3(fn);
         case 4: return _curry4(fn);
         case 5: return _curry5(fn);
         default:
             throw new Error('Number of arguments must be less than 5 and greater than zero');
-            // If you're writing a function that takes more than five arguments,
-            // you should not be using this library.
     }
-}
-
+};

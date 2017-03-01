@@ -1,5 +1,4 @@
 var _curry2 = require('./curry/_curry2');
-var _toStr = require('./_toStr');
 var _concat = require('./_concat');
 var _reduce = require('./_reduce');
 
@@ -14,7 +13,7 @@ var _reduce = require('./_reduce');
  * @returns {Array|Object|String}
  */
 module.exports = _curry2(function _filter(predicate, filterable) {
-    switch (_toStr(filterable)) {
+    switch (Object.prototype.toString.call(filterable)) {
         case '[object Array]': return _reduce(function(accumList, element) {
             return predicate(element) ? _concat(accumList, [ element ]) : accumList;
         }, [], filterable);

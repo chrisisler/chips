@@ -12,6 +12,7 @@ module.exports = {
     map: require('./src/_map'),
     nPass: require('./src/_nPass'),
     pipe: require('./src/_pipe'),
+    pmap: require('./src/_pmap'),
     prop: require('./src/_prop'),
     reduce: require('./src/_reduce'),
     toStr: require('./src/_toStr'),

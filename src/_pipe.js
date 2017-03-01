@@ -14,9 +14,9 @@
  * @returns {Function}
  */
 module.exports = function _pipe() {
-    var functions = arguments,
-        numOfFuncs = functions.length,
-        index = 0;
+    var functions = arguments;
+    var numOfFuncs = functions.length;
+    var index = 0;
     return function() {
         var rollingResult = functions[index].apply(this, arguments);
         index += 1;
@@ -25,5 +25,5 @@ module.exports = function _pipe() {
             index += 1;
         }
         return rollingResult;
-    }
-}
+    };
+};

@@ -4,7 +4,8 @@
   "description": "Composable functions written for self-improvement.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,7 @@
   },
   "homepage": "https://github.com/chrisisler/chips#readme",
   "devDependencies": {
+    "eslint": "^3.16.1",
     "mocha": "^3.2.0"
   }
 }
