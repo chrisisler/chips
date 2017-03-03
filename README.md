@@ -2,11 +2,12 @@
 Pure, composable, curried functions written for self-improvement.
 
 ## Why?
-- To learn by writing common functions like map, flatten, etc., and others like majorityPass.
-- For personal use.
+For personal use, and to learn how to write functions like, map, reduce, flatten, and other.
 
 ## Roadmap
-* Use eslint
+* Implement `_pipe` with applying `reduce` on `arguments`
+* Write `tail` and tests for it
+* Write `swapIndex` and tests for it
 
 ### Thank you Ramda
 Reading Ramda source has taught me many tricks, so thanks to those guys.

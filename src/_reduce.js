@@ -16,9 +16,6 @@ var _curry3 = require('./curry/_curry3');
  * @returns {*} - Value that results from the reduction.
  */
 module.exports = _curry3(function _reduce(reducer, accumulator, reducable) {
-    if (reducable.length === 0) {
-        return accumulator;
-    }
     var index = 0;
     var len = reducable.length;
     while (index < len) {
@@ -27,4 +24,3 @@ module.exports = _curry3(function _reduce(reducer, accumulator, reducable) {
     }
     return accumulator;
 });
-

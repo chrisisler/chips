@@ -14,6 +14,7 @@ module.exports = {
     pipe: require('./src/_pipe'),
     prop: require('./src/_prop'),
     reduce: require('./src/_reduce'),
+    tail: require('./src/_tail'),
     toStr: require('./src/_toStr'),
     values: require('./src/_values')
 };
