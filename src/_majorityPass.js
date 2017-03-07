@@ -9,8 +9,8 @@ var _is = require('./_is');
  * @see ./_allPass or Ramda's R.allPass implementation
  * @param {Function|Array[Function]} - Applied to each value to produce a Boolean.
  * @param {Array} values - A list of values.
- * @returns Boolean - If a majority (half or more) of the values in <values> return
- *                      true when applied to each <predicates> function.
+ * @returns Boolean - If a majority (half or more) of the values in `values` return
+ *                      true when applied to each `predicates` function.
  */
 module.exports = _curry2(function _majorityPass(predicates, values) {
     var index = 0;

@@ -10,8 +10,8 @@ var _curry3 = require('./curry/_curry3');
  * @example reduce((acc, x) => acc - x, 0, { a: 1, b: 2 }); //=> -3
  *
  * @see Array.prototype.reduce and R.reduce
- * @param {Function} reducer - Applied to each value in <reducable>.
- * @param {*} accumulator - Accumulated value previously returned from <reducer>.
+ * @param {Function} reducer - Applied to each value in `reducable`.
+ * @param {*} accumulator - Accumulated value previously returned from `reducer`.
  * @param {*} reducable - The data structure to reduce.
  * @returns {*} - Value that results from the reduction.
  */

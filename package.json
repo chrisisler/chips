@@ -4,7 +4,7 @@
   "description": "Pure, composable, curried functions written for self-improvement.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "clear && mocha",
     "lint": "eslint ."
   },
   "repository": {

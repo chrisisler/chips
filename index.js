@@ -16,6 +16,7 @@ module.exports = {
     reduce: require('./src/_reduce'),
     tail: require('./src/_tail'),
     toStr: require('./src/_toStr'),
-    values: require('./src/_values')
+    values: require('./src/_values'),
+    zipObjWith: require('./src/_zipObjWith')
 };
 

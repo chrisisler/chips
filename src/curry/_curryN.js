@@ -13,6 +13,9 @@ var _curry5 = require('./_curry5');
  * @returns {Function} - <fn> curried.
  */
 module.exports = function _curryN(N, fn) {
+    if (arguments.length !== 2) {
+        throw new Error('Must supply all arguments to curryN.');
+    }
     switch (N) {
         case 1: return function() { return fn.apply(this, arguments); };
         case 2: return _curry2(fn);

@@ -1,5 +1,4 @@
 var _curry2 = require('./curry/_curry2');
-var _concat = require('./_concat');
 var _reduce = require('./_reduce');
 
 /**
@@ -15,7 +14,7 @@ var _reduce = require('./_reduce');
 module.exports = _curry2(function _filter(predicate, filterable) {
     switch (Object.prototype.toString.call(filterable)) {
         case '[object Array]': return _reduce(function(accumList, element) {
-            return predicate(element) ? _concat(accumList, [ element ]) : accumList;
+            return predicate(element) ? accumList.concat([ element ]) : accumList;
         }, [], filterable);
         case '[object Object]': return _reduce(function(accumObj, prop) {
             if (predicate(filterable[prop])) {
@@ -24,7 +23,7 @@ module.exports = _curry2(function _filter(predicate, filterable) {
             return accumObj;
         }, {}, Object.keys(filterable));
         case '[object String]': return _reduce(function(accumStr, character) {
-            return predicate(character) ? accumStr += character : accumStr;
+            return predicate(character) ? accumStr + character : accumStr;
         }, '', filterable);
         default:
             throw new TypeError('Unsupported type for filterable.');

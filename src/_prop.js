@@ -3,7 +3,7 @@ var _curry2 = require('./curry/_curry2');
 /**
  * Returns obj[key].
  *
- * @param {String} key - A prop of <obj>.
+ * @param {String} key - A prop of `obj`.
  * @param {Object} obj
  * @returns {*}
  */

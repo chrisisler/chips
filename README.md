@@ -2,11 +2,9 @@
 Pure, composable, curried functions written for self-improvement.
 
 ## Why?
-For personal use, and to learn how to write functions like, map, reduce, flatten, and other.
+For personal use, and to learn how to write functions like, map, reduce, flatten, and others.
 
 ## Roadmap
-* Implement `_pipe` with applying `reduce` on `arguments`
-* Write `tail` and tests for it
 * Write `swapIndex` and tests for it
 
 ### Thank you Ramda
