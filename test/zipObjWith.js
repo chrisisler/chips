@@ -37,5 +37,8 @@ describe('zipObjWith', function() {
         assert.deepEqual(C.zipObjWith(dbl)(keys, vals), expected);
         assert.deepEqual(C.zipObjWith(dbl, keys)(vals), expected);
         assert.deepEqual(C.zipObjWith(dbl)(keys)(vals), expected);
+
+        assert.strictEqual(typeof C.zipObjWith(dbl, keys), 'function');
+        assert.strictEqual(typeof C.zipObjWith(dbl)(keys), 'function');
     });
 });

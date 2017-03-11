@@ -33,6 +33,19 @@ describe('concat', function() {
         );
     });
 
+    it('throws if argument types differ', function() {
+        // String
+        assert.throws(
+            function() { return C.concat('dogs', {}); },
+            TypeError
+        );
+        // Array
+        assert.throws(
+            function() { return C.concat([ 1 ], {}); },
+            TypeError
+        );
+    });
+
     it('is curried', function() {
         var concatDogs = C.concat('dogs');
         var concatOne = C.concat([ 1 ]);
@@ -45,18 +58,7 @@ describe('concat', function() {
             concatOne([ 2 ]),
             expectedArray
         );
-    });
 
-    it('throws if argument types differ', function() {
-        // String
-        assert.throws(
-            function() { return C.concat('dogs', {}); },
-            TypeError
-        );
-        // Array
-        assert.throws(
-            function() { return C.concat([ 1 ], {}); },
-            TypeError
-        );
+        assert.strictEqual(typeof concatOne, 'function');
     });
 });

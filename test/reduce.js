@@ -31,5 +31,7 @@ describe('reduce', function() {
         var strConcat = together('');
         assert.strictEqual(strConcat('monkey'), 'monkey');
         assert.strictEqual(strConcat(['m', 'o', 'n', 'k', 'e', 'y']), 'monkey');
+
+        assert.strictEqual(typeof sum, 'function');
     });
 });

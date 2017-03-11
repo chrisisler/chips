@@ -18,5 +18,8 @@ describe('nPass', function() {
         assert(twoPass(atLeastOne, nums));
 
         assert(twoValuesAreAtLeastOne(nums));
+
+        assert.strictEqual(typeof twoPass, 'function');
+        assert.strictEqual(typeof twoValuesAreAtLeastOne, 'function');
     });
 });

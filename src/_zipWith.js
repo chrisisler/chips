@@ -10,7 +10,6 @@ var _curry3 = require('./curry/_curry3');
  * @returns {Array} - [ f(a[0], b[0]), ..., f(a[i], b[i]) ]
  */
 module.exports = _curry3(function _zipWith(fn, listA, listB) {
-    fn = fn || function(x) { return x; };
     var len = Math.min(listA.length, listB.length);
     var result = Array(len);
     var index = 0;

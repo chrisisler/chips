@@ -60,5 +60,6 @@ describe('map', function() {
             curriedTimesTwo(nums),
             [ 2, 4, 6 ]
         );
+        assert.strictEqual(typeof curriedTimesTwo, 'function');
     });
 });

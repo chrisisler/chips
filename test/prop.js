@@ -18,5 +18,6 @@ describe('prop', function() {
     it('is curried', function() {
         var getName = C.prop('name');
         assert.deepEqual(getName(obj), 'sierra');
+        assert.strictEqual(typeof getName, 'function');
     });
 });

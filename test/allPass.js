@@ -47,13 +47,9 @@ describe('allPass', function() {
     it('is curried', function() {
         var everyPredicate = C.allPass([greaterThan5, lessThan10, equals8]);
 
-        assert.strictEqual(
-            everyPredicate(expected),
-            true
-        );
-        assert.strictEqual(
-            everyPredicate(Infinity),
-            false
-        );
+        assert.strictEqual(everyPredicate(expected), true);
+        assert.strictEqual(everyPredicate(Infinity), false);
+
+        assert.strictEqual(typeof everyPredicate, 'function');
     });
 });

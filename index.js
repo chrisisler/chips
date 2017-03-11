@@ -14,9 +14,11 @@ module.exports = {
     pipe: require('./src/_pipe'),
     prop: require('./src/_prop'),
     reduce: require('./src/_reduce'),
+    swapIndex: require('./src/_swapIndex'),
     tail: require('./src/_tail'),
     toStr: require('./src/_toStr'),
     values: require('./src/_values'),
-    zipObjWith: require('./src/_zipObjWith')
+    zipObjWith: require('./src/_zipObjWith'),
+    zipWith: require('./src/_zipWith')
 };
 

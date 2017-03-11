@@ -26,5 +26,6 @@ describe('majorityPass', function() {
             majorityOddAtLeastFive(nums),
             true
         );
+        assert.strictEqual(typeof majorityOddAtLeastFive, 'function');
     });
 });

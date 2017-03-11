@@ -27,24 +27,28 @@ describe('alterProp', function() {
         );
     });
 
-    it('is curried', function() {
-        var alterName = C.alterProp('name');
-        assert.deepEqual(
-            alterName(toUpper, { name: 'sally' }),
-            { name: 'SALLY' }
-        );
-
-        var alterNameToUpper = alterName(toUpper);
-        assert.deepEqual(
-            alterNameToUpper({ name: 'ken' }),
-            { name: 'KEN' }
-        );
-    });
-
     it('throws when applied to an empty object', function() {
         assert.throws(
             function() { C.alterProp('x', add1, {}); },
             Error
         );
+    });
+
+    it('is curried', function() {
+        var alterName = C.alterProp('name');
+        var alterNameToUpper = alterName(toUpper);
+
+        assert.deepEqual(
+            alterName(toUpper, { name: 'sally' }),
+            { name: 'SALLY' }
+        );
+
+        assert.deepEqual(
+            alterNameToUpper({ name: 'ken' }),
+            { name: 'KEN' }
+        );
+
+        assert.strictEqual(typeof alterName, 'function');
+        assert.strictEqual(typeof alterNameToUpper, 'function');
     });
 });

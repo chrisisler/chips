@@ -67,5 +67,7 @@ describe('filter', function() {
         assert.deepEqual(filterGreaterThanTwo(list), [ 3 ]);
         assert.deepEqual(filterGreaterThanTwo(obj), { c: 3 });
         assert.deepEqual(filterEqualsF(str), 'f');
+
+        assert.strictEqual(typeof filterEqualsF, 'function');
     });
 });
