@@ -1,5 +1,6 @@
 var _curry2 = require('./curry/_curry2');
 var _reduce = require('./_reduce');
+var _concat = require('./_concat');
 
 /**
  * Returns a new "filterable" containing values which satisfy the predicate.
@@ -14,7 +15,7 @@ var _reduce = require('./_reduce');
 module.exports = _curry2(function _filter(predicate, filterable) {
     switch (Object.prototype.toString.call(filterable)) {
         case '[object Array]': return _reduce(function(accumList, element) {
-            return predicate(element) ? accumList.concat([ element ]) : accumList;
+            return predicate(element) ? _concat(accumList, [ element ]) : accumList;
         }, [], filterable);
         case '[object Object]': return _reduce(function(accumObj, prop) {
             if (predicate(filterable[prop])) {
