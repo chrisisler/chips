@@ -5,17 +5,13 @@ var _curry5 = require('./_curry5');
 
 /**
  * Returns a new function that when called with a subset of the original
- * functions arguments, returns a new function. Limited to 5 parameters.
+ * functions arguments, returns a new function. `fn` is limited to 5 parameters.
  *
- * @param {Number} N - Number of arguments `fn` takes.
  * @param {Function} fn - A function to curry.
  * @returns {Function}
  */
-module.exports = function _curryN(N, fn) {
-    if (arguments.length !== 2) {
-        throw new Error('Must supply both arguments to curryN.');
-    }
-    switch (N) {
+module.exports = function _curry(fn) {
+    switch (fn.length) {
         case 1: return function() { return fn.apply(this, arguments); };
         case 2: return _curry2(fn);
         case 3: return _curry3(fn);

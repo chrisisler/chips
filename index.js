@@ -3,7 +3,7 @@ module.exports = {
     alterProp: require('./src/_alterProp'),
     assign: require('./src/util/_assign'),
     concat: require('./src/_concat'),
-    curryN: require('./src/curry/_curryN'),
+    curry: require('./src/curry/_curry'),
     filter: require('./src/_filter'),
     flatten: require('./src/_flatten'),
     has: require('./src/util/_has'),
