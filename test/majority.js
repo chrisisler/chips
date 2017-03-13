@@ -1,7 +1,7 @@
 var assert = require('assert');
 var C = require('../index');
 
-describe('majorityPass', function() {
+describe('majority', function() {
     var isEven = function(x) { return x % 2 === 0; };
     var isOdd = function(x) { return x % 2 === 1; };
     var atLeastFive = function(x) { return x >= 5; };
@@ -11,17 +11,17 @@ describe('majorityPass', function() {
 
     it('Returns true if all predicates are satisfied by at least half of the values', function() {
         assert.strictEqual(
-            C.majorityPass([ isNumber, atLeastFive ], nums),
+            C.majority([ isNumber, atLeastFive ], nums),
             true
         );
         assert.strictEqual(
-            C.majorityPass([ isEven, isNumber ], [ 2, 4, 'foo', 7, 8 ]),
+            C.majority([ isEven, isNumber ], [ 2, 4, 'foo', 7, 8 ]),
             true
         );
     });
 
     it('is curried', function() {
-        var majorityOddAtLeastFive = C.majorityPass([ isOdd, atLeastFive ]);
+        var majorityOddAtLeastFive = C.majority([ isOdd, atLeastFive ]);
         assert.strictEqual(
             majorityOddAtLeastFive(nums),
             true

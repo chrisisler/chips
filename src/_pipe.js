@@ -3,6 +3,7 @@ var _reduce = require('./_reduce');
 
 /**
  * A variadic function that composes the supplied functions in the order given.
+ * Returns a function with arity equal to the first supplied function.
  *
  * @example
  *     var adultNamesOver30 = _pipe(filter(adult => adult.age > 30), map(adult => adult.name));

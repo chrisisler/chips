@@ -5,14 +5,13 @@ var _is = require('./_is');
 /**
  * Returns true if at least half of the values satisfy each function.
  *
- * @example _majorityPass([ x => x % 2 === 1, x => x === 3 ], [ 3, 3, 2 ]); //=> true
- * @see ./_allPass or Ramda's R.allPass implementation
+ * @example _majority([ x => x % 2 === 1, x => x === 3 ], [ 3, 3, 2 ]); //=> true
  * @param {Function|Array[Function]} - Applied to each value to produce a Boolean.
  * @param {Array} values - A list of values.
  * @returns Boolean - If a majority (half or more) of the values in `values` return
  *                      true when applied to each `predicates` function.
  */
-module.exports = _curry2(function _majorityPass(predicates, values) {
+module.exports = _curry2(function _majority(predicates, values) {
     var index = 0;
     var numValuesPass = 0;
     var len = values.length;

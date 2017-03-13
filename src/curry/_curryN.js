@@ -4,13 +4,12 @@ var _curry4 = require('./_curry4');
 var _curry5 = require('./_curry5');
 
 /**
- * A poor man's R.curryN() from Ramda.
+ * Returns a new function that when called with a subset of the original
+ * functions arguments, returns a new function. Limited to 5 parameters.
  *
- * @see R.curryN
- * @see R.curry : Ramda's currying implementations github.com/ramda/ramda
- * @param {Number} N - Number of arguments <fn> is applied to.
+ * @param {Number} N - Number of arguments `fn` takes.
  * @param {Function} fn - A function to curry.
- * @returns {Function} - <fn> curried.
+ * @returns {Function}
  */
 module.exports = function _curryN(N, fn) {
     if (arguments.length !== 2) {
@@ -22,7 +21,6 @@ module.exports = function _curryN(N, fn) {
         case 3: return _curry3(fn);
         case 4: return _curry4(fn);
         case 5: return _curry5(fn);
-        default:
-            throw new Error('Number of arguments must be less than 5 and greater than zero');
+        default: throw new Error('Number of arguments must be less than 5 and greater than zero');
     }
 };

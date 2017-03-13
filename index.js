@@ -8,7 +8,7 @@ module.exports = {
     flatten: require('./src/_flatten'),
     has: require('./src/_has'),
     is: require('./src/_is'),
-    majorityPass: require('./src/_majorityPass'),
+    majority: require('./src/_majority'),
     map: require('./src/_map'),
     nPass: require('./src/_nPass'),
     pipe: require('./src/_pipe'),
