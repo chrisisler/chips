@@ -1,5 +1,5 @@
 var _curry3 = require('./curry/_curry3');
-var _assign = require('./_assign');
+var _assign = require('./util/_assign');
 
 /**
  * Returns a new object by applying the given function to the specified property.

@@ -1,4 +1,4 @@
-var _curry2 = require('./curry/_curry2');
+var _curry2 = require('../curry/_curry2');
 
 /**
  * Returns true if obj has own prop.

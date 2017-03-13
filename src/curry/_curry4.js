@@ -25,7 +25,7 @@ module.exports = function _curry4(fn) {
             case 1: return _curry3(_autoApply(fn, arguments));
             case 2: return _curry2(_autoApply(fn, arguments));
             case 3: return _autoApply(fn, arguments);
-            default: return fn(a1, a2, a3, a4);
+            default: return fn.apply(this, arguments);
         }
     };
 };

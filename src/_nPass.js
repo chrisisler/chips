@@ -1,4 +1,4 @@
-var _is = require('./_is');
+var _is = require('./util/_is');
 var _filter = require('./_filter');
 var _curry3 = require('./curry/_curry3');
 

@@ -1,6 +1,6 @@
 var _curry2 = require('./curry/_curry2');
-var _toStr = require('./_toStr');
-var _is = require('./_is');
+var _toStr = require('./util/_toStr');
+var _is = require('./util/_is');
 var _reduce = require('./_reduce');
 
 /**
@@ -16,12 +16,14 @@ module.exports = _curry2(function _concat(a, b) {
     if (_toStr(a) !== _toStr(b)) {
         throw new TypeError('Both arguments must be of the same type.');
     }
-    return _is('String', a)
-        ? a + b
-        : _is('Function', a.concat)
-            ? a.concat(b)
-            : _reduce(function(accumList, elem) {
-                accumList[accumList.length] = elem;
-                return accumList;
-            }, a, b);
+    if (_is('String', a)) {
+        return a + b;
+    } else if (_is('Function', a.concat)) {
+        return a.concat(b);
+    } else {
+        return _reduce(function(accumList, elem) {
+            accumList[accumList.length] = elem;
+            return accumList;
+        }, a, b);
+    }
 });

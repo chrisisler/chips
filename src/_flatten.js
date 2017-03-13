@@ -1,4 +1,4 @@
-var _is = require('./_is');
+var _is = require('./util/_is');
 var _concat = require('./_concat');
 var _reduce = require('./_reduce');
 

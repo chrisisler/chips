@@ -1,6 +1,6 @@
 var _allPass = require('./_allPass');
 var _curry2 = require('./curry/_curry2');
-var _is = require('./_is');
+var _is = require('./util/_is');
 
 /**
  * Returns true if at least half of the values satisfy each function.

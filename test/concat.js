@@ -33,17 +33,13 @@ describe('concat', function() {
         );
     });
 
-    it('throws if argument types differ', function() {
-        // String
-        assert.throws(
-            function() { return C.concat('dogs', {}); },
-            TypeError
-        );
-        // Array
-        assert.throws(
-            function() { return C.concat([ 1 ], {}); },
-            TypeError
-        );
+    it('defaults to using _reduce if concat is not available', function() {
+        var nativeArrayConcat = Array.prototype.concat;
+        Array.prototype.concat = void 0;
+
+        assert.deepEqual(C.concat([ 'x' ], [ 'y' ]), [ 'x', 'y' ]);
+
+        Array.prototype.concat = nativeArrayConcat;
     });
 
     it('is curried', function() {
@@ -60,5 +56,18 @@ describe('concat', function() {
         );
 
         assert.strictEqual(typeof concatOne, 'function');
+    });
+
+    it('throws if argument types differ', function() {
+        // String
+        assert.throws(
+            function() { return C.concat('dogs', {}); },
+            TypeError
+        );
+        // Array
+        assert.throws(
+            function() { return C.concat([ 1 ], {}); },
+            TypeError
+        );
     });
 });

@@ -1,4 +1,4 @@
-var _has = require('./_has');
+var _has = require('./util/_has');
 var _reduce = require('./_reduce');
 
 /**
