@@ -1,7 +1,5 @@
-var _autoApply = require('./util/_autoApply');
-
 /**
- * Returns a new function that when called with a subset of the original
+ * Returns a new function that, when called with not enough of the original
  * functions arguments, returns a new function.
  *
  * @example
@@ -14,10 +12,10 @@ var _autoApply = require('./util/_autoApply');
  * @returns {Function}
  */
 module.exports = function _curry2(fn) {
-    return function _f() {
+    return function arity2(a1, a2) {
         switch (arguments.length) {
-            case 0: return _f;
-            case 1: return _autoApply(fn, arguments);
+            case 0: return arity2;
+            case 1: return function(_a2) { return fn(a1, _a2); };
             default: return fn.apply(this, arguments);
         }
     };

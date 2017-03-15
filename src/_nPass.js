@@ -1,6 +1,6 @@
 var _is = require('./util/_is');
 var _filter = require('./_filter');
-var _curry3 = require('./curry/_curry3');
+var _curry3 = require('./_curry3');
 
 /**
  * Applies the predicate function to every element the `filterable`.

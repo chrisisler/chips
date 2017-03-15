@@ -1,10 +1,10 @@
-var _curry3 = require('./curry/_curry3');
+var _curry3 = require('./_curry3');
 
 /**
- * Applies an iterator function against a cumulative value and each value
- * of the data structure (from left-to-right) to reduce it to a single value.
+ * Applies an iterator function, `reducer`, against an accumulator and each value
+ * in the data structure (from left-to-right) to produce a single value.
  *
- * "Reducable" must be an array-like object with a .length property.
+ * `Reducable` must have a .length property.
  *
  * @example reduce((acc, x) => acc + x, 0, [ 1, 2, 3 ]); //=> 6
  * @example reduce((acc, x) => acc - x, 0, { a: 1, b: 2 }); //=> -3

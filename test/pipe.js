@@ -14,7 +14,7 @@ describe('pipe', function() {
         assert.strictEqual(C.pipe.length, 0);
     });
 
-    it('comprises functions in the order supplied', function() {
+    it('composes functions in the order supplied', function() {
         assert.strictEqual(add2(3), 5);
     });
 });

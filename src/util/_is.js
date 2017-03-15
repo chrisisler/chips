@@ -1,4 +1,4 @@
-var _curry2 = require('../curry/_curry2');
+var _curry2 = require('../_curry2');
 
 /**
  * @param {String} type - Like 'String', 'Array', etc. Must be capitalized.

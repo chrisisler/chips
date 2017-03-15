@@ -1,5 +1,5 @@
 var _allPass = require('./_allPass');
-var _curry2 = require('./curry/_curry2');
+var _curry2 = require('./_curry2');
 var _is = require('./util/_is');
 
 /**

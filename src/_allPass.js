@@ -1,4 +1,4 @@
-var _curry2 = require('./curry/_curry2');
+var _curry2 = require('./_curry2');
 
 /**
  * Return true if `value` satisifies each function in `predicates`.

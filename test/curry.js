@@ -1,10 +1,6 @@
 var assert = require('assert');
 var C = require('../index');
 
-function toStr(x) {
-    return Object.prototype.toString.call(x);
-}
-
 describe('curry', function() {
     it('curries two', function() {
         var add2 = function(a, b) { return a + b; };
@@ -58,6 +54,7 @@ describe('curry', function() {
         var add5 = function(a, b, c, d, e) { return a + b + c + d + e; };
         var curriedAdd5 = C.curry(add5);
 
+        assert.strictEqual(typeof curriedAdd5, 'function');
         assert.strictEqual(typeof curriedAdd5(1)(2)(3)(4), 'function');
         assert.strictEqual(typeof curriedAdd5(1, 2)(3, 4), 'function');
         assert.strictEqual(typeof curriedAdd5(1, 2, 3, 4), 'function');
@@ -93,12 +90,5 @@ describe('curry', function() {
 
         assert.strictEqual(curriedAdd5(1, 2, 3, 4)(5), 15);
         assert.strictEqual(curriedAdd5(1)(2, 3, 4, 5), 15);
-    });
-
-    it('does not curry more than five: throws instead', function() {
-        assert.throws(
-            function() { C.curry(function(a, b, c, d, e, f) {}) },
-            Error
-        );
     });
 });

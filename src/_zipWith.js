@@ -1,4 +1,4 @@
-var _curry3 = require('./curry/_curry3');
+var _curry3 = require('./_curry3');
 
 /**
  * Return a new list by applying the given function to each equally-positioned
