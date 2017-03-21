@@ -35,4 +35,4 @@ function autoCurry(fn, receivedArgs) {
             ? fn.apply(this, combinedArgs)
             : autoCurry(fn, combinedArgs);
     };
-};
+}

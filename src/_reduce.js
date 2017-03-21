@@ -10,9 +10,9 @@ var _curry3 = require('./_curry3');
  * @example reduce((acc, x) => acc - x, 0, { a: 1, b: 2 }); //=> -3
  *
  * @param {Function} reducer - Applied to each value in `reducable`.
- * @param {*} accumulator - Accumulated value previously returned from `reducer`.
- * @param {*} reducable - The data structure to reduce.
- * @returns {*} - Value that results from the reduction.
+ * @param {a} accumulator - Accumulated value previously returned from `reducer`.
+ * @param {Array(Like)|String} reducable - The data structure to reduce.
+ * @returns {a} - Value that results from the reduction.
  */
 module.exports = _curry3(function _reduce(reducer, accumulator, reducable) {
     var index = 0;

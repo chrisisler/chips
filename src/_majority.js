@@ -13,9 +13,9 @@ var _is = require('./util/_is');
  */
 module.exports = _curry2(function _majority(predicates, values) {
     var index = 0;
-    var numValuesPass = 0;
     var len = values.length;
-    var majorityLen = Math.ceil(len / 2);
+    var numValsPass = 0;
+    var majorityLen = Math.ceil(len / 2); // The number of values that must pass.
 
     if (_is('Function', predicates)) {
         predicates = [ predicates ];
@@ -23,9 +23,9 @@ module.exports = _curry2(function _majority(predicates, values) {
 
     while (index < len) {
         if (_allPass(predicates, values[index])) {
-            numValuesPass += 1;
+            numValsPass += 1;
         }
-        if (numValuesPass === majorityLen) {
+        if (numValsPass === majorityLen) {
             return true;
         }
         index += 1;

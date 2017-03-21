@@ -23,4 +23,3 @@ module.exports = {
     zipObjWith: require('./src/_zipObjWith'),
     zipWith: require('./src/_zipWith')
 };
-
