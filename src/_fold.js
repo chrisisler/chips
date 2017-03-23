@@ -7,8 +7,8 @@ var _reduce = require('./_reduce');
  * value is implicitly taken from `reducable[0]`.
  *
  * @param {Function} fn - Applied to an accumulator and each value in `reducable`.
- * @param {*} reducable
- * @returns {*}
+ * @param {Array(Like)|String} reducable - The data structure to reduce.
+ * @returns {Array(Like)|String}
  */
 module.exports = _curry2(function _fold(fn, reducable) {
     return _reduce(fn, reducable[0], _tail(reducable));

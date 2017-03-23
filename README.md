@@ -6,6 +6,7 @@ To practice writing unit tests and common functions like map, reduce, flatten, e
 
 ## Roadmap
 * Provide an @example for every function.
+  * Or a top-level EXAMPLES.md which describes the API
 * Write more accessible comments.
 * Allow `filter` to provide a second function to have a piped filter, like `map`.
 
