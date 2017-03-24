@@ -3,7 +3,7 @@ var _concat = require('./_concat');
 var _reduce = require('./_reduce');
 
 /**
- * Return a copy of the given list, recursively flattened (made into one-dimension).
+ * Returns a copy of the given list flattened to one-dimension (plucked out sub-lists).
  *
  * @example _flatten([ 1, [ 2, [ 3 ] ] ]); //=> [ 1, 2, 3 ]
  * @param {Array} list

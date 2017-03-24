@@ -1,15 +1,12 @@
 module.exports = {
     allPass: require('./src/_allPass'),
     alterProp: require('./src/_alterProp'),
-    assign: require('./src/util/_assign'),
     concat: require('./src/_concat'),
     curry: require('./src/_curry'),
     filter: require('./src/_filter'),
     flatMap: require('./src/_flatMap'),
     flatten: require('./src/_flatten'),
     fold: require('./src/_fold'),
-    has: require('./src/util/_has'),
-    is: require('./src/util/_is'),
     majority: require('./src/_majority'),
     map: require('./src/_map'),
     nPass: require('./src/_nPass'),
@@ -19,7 +16,6 @@ module.exports = {
     reduceWhile: require('./src/_reduceWhile'),
     swapIndex: require('./src/_swapIndex'),
     tail: require('./src/_tail'),
-    toStr: require('./src/util/_toStr'),
     values: require('./src/_values'),
     zipObjWith: require('./src/_zipObjWith'),
     zipWith: require('./src/_zipWith')

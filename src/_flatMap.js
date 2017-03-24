@@ -4,7 +4,7 @@ var _flatten = require('./_flatten');
 var _pipe = require('./_pipe');
 
 /**
- * Returns the flattened result of applying a function to some data structure.
+ * Returns the flattened result of applying a function to a list.
  *
  * @example flatMap(x => [ x, ln(x) ], [ 1, e ]); //=> [ 1, 0, e, 1 ]
  * @example flatMap(x => [ x, x * x ], [ 3, 4 ]); //=> [ 3, 9, 4, 16 ]
