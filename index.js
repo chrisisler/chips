@@ -5,6 +5,7 @@ module.exports = {
     concat: require('./src/_concat'),
     curry: require('./src/_curry'),
     filter: require('./src/_filter'),
+    flatMap: require('./src/_flatMap'),
     flatten: require('./src/_flatten'),
     fold: require('./src/_fold'),
     has: require('./src/util/_has'),

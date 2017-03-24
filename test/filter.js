@@ -55,7 +55,7 @@ describe('filter', function() {
 
     it('throws when "filterable" argument is not a list, object, or string', function() {
         assert.throws(
-            function() { C.filter(greaterThanTwo, greaterThanTwo); },
+            function() { C.filter(greaterThanTwo, 42); },
             TypeError
         );
     });

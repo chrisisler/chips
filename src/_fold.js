@@ -3,6 +3,7 @@ var _tail = require('./_tail');
 var _reduce = require('./_reduce');
 
 /**
+ * A shorthand for `reduce`.
  * This function behaves the same as `reduce` except the initial `accumulator`
  * value is implicitly taken from `reducable[0]`.
  *

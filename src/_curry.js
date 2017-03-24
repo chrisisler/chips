@@ -2,28 +2,28 @@ var _curry2 = require('./_curry2');
 var _curry3 = require('./_curry3');
 
 /**
- * Returns a new function that, when called with not enough of the original
+ * Returns a new function that, when called with subset of the original
  * functions arguments, returns a new function.
  *
  * @param {Function} fn - Function to curry.
  * @returns {Function} - `fn`, curried.
  */
 module.exports = function _curry(fn) {
-    if (fn.length === 2) {
-        return _curry2(fn);
-    } else if (fn.length === 3) {
-        return _curry3(fn);
+    switch (fn.length) {
+        case 2: return _curry2(fn);
+        case 3: return _curry3(fn);
+        default: return function() {
+            return fn.length === arguments.length
+                ? fn.apply(this, arguments)
+                : autoCurry(fn, arguments);
+        };
     }
-    return function() {
-        return fn.length === arguments.length
-            ? fn.apply(this, arguments)
-            : autoCurry(fn, arguments);
-    };
 };
 
 /**
- * This function is called over and over again until `fn` receives all its parameters.
+ * Repeatedly returns a function until `fn` receives a number of arguments equal to its arity.
  *
+ * @private
  * @param {Function} fn - The function to curry.
  * @param {Arguments} receivedArgs - The arguments received so far.
  * @returns {Function}

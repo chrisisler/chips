@@ -1,6 +1,7 @@
 var _curry2 = require('./_curry2');
 var _reduce = require('./_reduce');
 var _concat = require('./_concat');
+var _pipe = require('./_pipe');
 
 /**
  * Returns a new "filterable" containing values which satisfy the predicate.
@@ -12,21 +13,26 @@ var _concat = require('./_concat');
  * @param {Array|Object|String} filterable
  * @returns {Array|Object|String}
  */
-module.exports = _curry2(function _filter(predicate, filterable) {
+var _filter = _curry2(function(predicate, filterable) {
     switch (Object.prototype.toString.call(filterable)) {
-        case '[object Array]': return _reduce(function(accumList, element) {
-            return predicate(element) ? _concat(accumList, [ element ]) : accumList;
-        }, [], filterable);
-        case '[object Object]': return _reduce(function(accumObj, prop) {
-            if (predicate(filterable[prop])) {
-                accumObj[prop] = filterable[prop];
-            }
-            return accumObj;
-        }, {}, Object.keys(filterable));
-        case '[object String]': return _reduce(function(accumStr, character) {
-            return predicate(character) ? accumStr + character : accumStr;
-        }, '', filterable);
+        case '[object Array]':
+            return _reduce(function(accumList, element) {
+                return predicate(element) ? _concat(accumList, [ element ]) : accumList;
+            }, [], filterable);
+        case '[object Object]':
+            return _reduce(function(accumObj, prop) {
+                if (predicate(filterable[prop])) {
+                    accumObj[prop] = filterable[prop];
+                }
+                return accumObj;
+            }, {}, Object.keys(filterable));
+        case '[object String]':
+            return _reduce(function(accumStr, character) {
+                return predicate(character) ? accumStr + character : accumStr;
+            }, '', filterable);
         default:
             throw new TypeError('Unsupported type for filterable.');
     }
 });
+
+module.exports = _filter;

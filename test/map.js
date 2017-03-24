@@ -5,7 +5,7 @@ describe('map', function() {
     var timesTwo = function(x) { return x * 2; };
     var nums = [ 1, 2, 3 ];
 
-    describe('Returns the result of applying a function to some data', function() {
+    describe('returns the result of applying a function to some data', function() {
         it('works on lists', function() {
             assert.deepEqual(
                 C.map(timesTwo, nums),
@@ -46,11 +46,8 @@ describe('map', function() {
         });
     });
 
-    it('throws if data is not array, obj, string, or function', function() {
-        assert.throws(
-            function() { C.map(timesTwo, 100); },
-            TypeError
-        );
+    it('works on numbers', function() {
+        assert.strictEqual(C.map(timesTwo, 100), 200);
     });
 
     it('is curried', function() {

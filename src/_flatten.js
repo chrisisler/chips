@@ -10,11 +10,7 @@ var _reduce = require('./_reduce');
  * @returns {Array}
  */
 module.exports = function _flatten(list) {
-    return _reduce(function(accumList, element) {
-        if (_is('Array', element)) {
-            return _flatten(_concat(accumList, element));
-        }
-        accumList[accumList.length] = element;
-        return accumList;
+    return _reduce(function(accumList, val) {
+        return _is('Array', val) ? _flatten(_concat(accumList, val)) : _concat(accumList, [ val ]);
     }, [], list);
 };
