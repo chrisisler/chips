@@ -50,6 +50,12 @@ describe('map', function() {
         assert.strictEqual(C.map(timesTwo, 100), 200);
     });
 
+    it('when mapping an object, passes each key to the function as a second argument', function() {
+        C.map(function(val, key) {
+            assert.strictEqual(typeof key, 'string');
+        }, { foo: 'bar' });
+    });
+
     it('is curried', function() {
         var curriedTimesTwo = C.map(timesTwo);
 

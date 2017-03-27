@@ -7,7 +7,7 @@ Chips delivers powerful abstractions making it effortless to write declarative l
 * Data is _never_ mutated, a copy is always returned.
 
 ## Roadmap
-Looking pretty solid at the moment.
+* Normalize @examples
 
 ## API
 
@@ -84,6 +84,12 @@ C.map(x => x * 2, y => y + 1)(3); //=> 7
 C.map(toUpper, 'foo'); //=> 'FOO'
 ```
 
+#### mergeAllBy :: `C.mergeAllBy(resolveFn, objects)`
+Equivalent to `Object.assign` but when a key has multiple non-same values, `resolveFn` is applied to an array of those values to produce a resulting value.
+```javascript
+C.mergeAllBy(vals => Math.min(...vals), [ { x: 10, y: 25 }, { x: 11, y: 60 } ]); //=> { x: 10, y: 25 }
+```
+
 #### nPass :: `C.nPass(N, predicate, filterable)`
 Returns true if `N` elements in `filterable` satisfy the `predicate` function.
 ```javascript
@@ -110,7 +116,8 @@ C.map(C.prop('name'), [ { name: 'damien', name: 'aubrey' } ]); //=> [ 'damien', 
 Applies an iterator function, `reducingFn` against an `accumulator` and each element in the data structure `reducable` (from left-to-right) to produce a single output.
 ```javascript
 C.reduce((sum, x) => sum + x, 0, [ 1, 2, 3]); //=> 6
-C.reduce((arr, x) => isArray(x) ? C.flatten(C.concat(arr, x)) : C.concat(arr, [ x ]), [], [[ 1, [ 2, [ [ 3, []]]]]]); //=> [ 1, 2, 3 ] // This is C.flatten
+const _flat = (arr, x) => isArray(x) ? C.flatten(C.concat(arr, x)) : C.concat(arr, [ x ]);
+C.reduce(_flat, [], [[ 1, [ 2 ] ], [ 3, [] ]]); //=> [ 1, 2, 3 ] // This is C.flatten
 ```
 
 #### reduceWhile :: `C.reduceWhile(predicate, reducingFn, accumulator, reducable)`
@@ -130,6 +137,12 @@ C.swapIndex(0, 2, [ 'a', 'b', 'c' ]); //=> [ 'c', 'b', 'a' ]
 Returns a copy of the given list containing every element except the zeroth.
 ```javascript
 C.tail([ 1, 2, 3 ]); //=> [ 2, 3 ]
+```
+
+### uniq :: `C.uniq(list)`
+Returns a list containing all non-same values.
+```javascript
+C.uniq([ 2, 2, 4, 5 ]); //=> [ 2, 4, 5 ]
 ```
 
 #### values :: `C.values(obj)`

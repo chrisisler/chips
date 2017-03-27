@@ -22,8 +22,8 @@ module.exports = _curry2(function _map(fn, mappable) {
                 return accumList;
             }, [], mappable);
         case '[object Object]':
-            return _reduce(function(accumObj, prop) {
-                accumObj[prop] = fn(mappable[prop]);
+            return _reduce(function(accumObj, key) {
+                accumObj[key] = fn(mappable[key], key);
                 return accumObj;
             }, {}, Object.keys(mappable));
         case '[object String]':

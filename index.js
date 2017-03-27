@@ -9,6 +9,7 @@ module.exports = {
     fold: require('./src/_fold'),
     majority: require('./src/_majority'),
     map: require('./src/_map'),
+    mergeAllBy: require('./src/_mergeAllBy'),
     nPass: require('./src/_nPass'),
     pipe: require('./src/_pipe'),
     prop: require('./src/_prop'),
@@ -16,6 +17,7 @@ module.exports = {
     reduceWhile: require('./src/_reduceWhile'),
     swapIndex: require('./src/_swapIndex'),
     tail: require('./src/_tail'),
+    uniq: require('./src/_uniq'),
     values: require('./src/_values'),
     zipObjWith: require('./src/_zipObjWith'),
     zipWith: require('./src/_zipWith')

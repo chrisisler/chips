@@ -1,7 +1,6 @@
 var _curry2 = require('./_curry2');
 var _reduce = require('./_reduce');
 var _concat = require('./_concat');
-var _pipe = require('./_pipe');
 
 /**
  * Returns a new "filterable" containing values which satisfy the predicate.
