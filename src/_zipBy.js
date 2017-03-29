@@ -9,7 +9,7 @@ var _curry3 = require('./_curry3');
  * @param {Array} ys
  * @returns {Array} - [ f(xs[0], ys[0]), ..., f(xs[i], ys[i]) ]
  */
-module.exports = _curry3(function _zipWith(fn, xs, ys) {
+module.exports = _curry3(function _zipBy(fn, xs, ys) {
     var len = Math.min(xs.length, ys.length);
     var result = Array(len);
     var index = 0;

@@ -19,6 +19,6 @@ module.exports = {
     tail: require('./src/_tail'),
     uniq: require('./src/_uniq'),
     values: require('./src/_values'),
-    zipObjWith: require('./src/_zipObjWith'),
-    zipWith: require('./src/_zipWith')
+    zipObjBy: require('./src/_zipObjBy'),
+    zipBy: require('./src/_zipBy')
 };
