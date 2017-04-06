@@ -35,7 +35,7 @@ module.exports = _curry2(function _map(fn, mappable) {
                 return mappable.call(this, fn.apply(this, arguments));
             };
         case '[object Number]':
-            return fn(mappable);
+            return fn(mappable); // This can be removed.
         default:
             throw new TypeError('Unsupported type for mappable.');
     }

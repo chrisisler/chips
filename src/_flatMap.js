@@ -10,9 +10,9 @@ var _pipe = require('./_pipe');
  * @example flatMap(x => [ x, x * x ], [ 3, 4 ]); //=> [ 3, 9, 4, 16 ]
  *
  * @param {Function} fn
- * @param {Array} list
+ * @param {Array} xs
  * @returns {Array}
  */
-module.exports = _curry2(function(fn, list) {
-    return _pipe(_map, _flatten)(fn, list);
+module.exports = _curry2(function(fn, xs) {
+    return _pipe(_map, _flatten)(fn, xs);
 });
