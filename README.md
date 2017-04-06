@@ -3,7 +3,7 @@ Chips is a functional JS library promoting succinct and immutable code.
 
 Chips delivers powerful abstractions making it effortless to write declarative logic that is simple to understand and painless to maintain.
 * Compose methods to build custom modular functions.
-* Each function is [curried](https://www.sitepoint.com/currying-in-functional-javascript/) to provide a flexible and creative API.
+* Each function is [curried](https://www.sitepoint.com/currying-in-functional-javascript/) to provide a flexible API.
 * Data is _never_ mutated, a copy is always returned.
 
 ## Roadmap
@@ -60,11 +60,11 @@ Returns a copy of the given list flattened to one-dimension (picked out sub-list
 C.flatten([ 1, [ 2, [], [ 3 ] ] ]); //=> [ 1, 2, 3 ]
 ```
 
-#### fold :: `C.fold(fn, reducable)`
-In this library, `fold` is a shorthand for `reduce` where an accumulator value is _not_ supplied but taken from `reducable[0]`.
+#### accum :: `C.accum(fn, lengthable)`
+In this library, `accum` is a shorthand for `reduce` where an accumulator value is _not_ supplied but taken from `lengthable[0]`.
 ```javascript
-C.fold((sum, n) => sum + n, [ 1, 2, 3 ]); //=> 6
-const map = (fn, array) => C.fold((arr, x) => C.concat(arr, [ fn(x) ]), array);
+C.accum((sum, n) => sum + n, [ 1, 2, 3 ]); //=> 6
+const map = (fn, array) => C.accum((arr, x) => C.concat(arr, [ fn(x) ]), array);
 ```
 
 #### majority :: `C.majority(predicates, values)`
@@ -112,16 +112,16 @@ C.prop('id', { foo: 'bar', id: 41983 }); //=> 41983
 C.map(C.prop('name'), [ { name: 'damien', name: 'aubrey' } ]); //=> [ 'damien', 'aubrey' ]
 ```
 
-#### reduce :: `C.reduce(reducingFn, accumulator, reducable)`
-Applies an iterator function, `reducingFn` against an `accumulator` and each element in the data structure `reducable` (from left-to-right) to produce a single output.
+#### reduce :: `C.reduce(reducingFn, accumulator, lengthable)`
+Applies an iterator function, `reducingFn` against an `accumulator` and each element in the data structure `lengthable` (from left-to-right) to produce a single output.
 ```javascript
 C.reduce((sum, x) => sum + x, 0, [ 1, 2, 3]); //=> 6
 const _flat = (arr, x) => isArray(x) ? C.flatten(C.concat(arr, x)) : C.concat(arr, [ x ]);
 C.reduce(_flat, [], [[ 1, [ 2 ] ], [ 3, [] ]]); //=> [ 1, 2, 3 ] // This is C.flatten
 ```
 
-#### reduceWhile :: `C.reduceWhile(predicate, reducingFn, accumulator, reducable)`
-Applies an iterator function, `reducingFn` against an `accumulator` and each element in the data structure `reducable` (from left-to-right) while `predicate(accum, reducable[i])` returns true to produce a single output.
+#### reduceWhile :: `C.reduceWhile(predicate, reducingFn, accumulator, lengthable)`
+Applies an iterator function, `reducingFn` against an `accumulator` and each element in the data structure `lengthable` (from left-to-right) while `predicate(accum, lengthable[i])` returns true to produce a single output.
 ```javascript
 const lessThan3 = (acc, n) => (acc + n) < 3;
 C.reduceWhile(lessThan3, (x, y) => x + y, 0, [ 1, 2, 3, 4 ]); //=> 3

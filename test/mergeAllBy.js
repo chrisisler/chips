@@ -3,7 +3,7 @@ var C = require('../index');
 
 describe('mergeAllBy', function() {
     var objs = [ { a: 1, c: 3, d: 4 }, { b: 2, c: 3, d: 7 }, { e: 5, c: 3, d: 0 } ];
-    var sum = C.fold(function(sum, x) { return sum + x; });
+    var sum = C.accum(function(sum, x) { return sum + x; });
 
     var expected = { a: 1, b: 2, c: 3, d: 11, e: 5 };
 

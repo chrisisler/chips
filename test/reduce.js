@@ -14,7 +14,7 @@ describe('reduce', function() {
         assert.strictEqual(C.reduce(add, '', 'foo'), 'foo');
     });
 
-    it('returns the supplied `accumulator` if the given `reducable` empty', function() {
+    it('returns the supplied `accumulator` if the given `lengthable` empty', function() {
         assert.strictEqual(C.reduce(add, 0, []), 0);
         assert.deepEqual(C.reduce(C.concat, [], []), []);
 

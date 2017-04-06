@@ -12,7 +12,7 @@ var trueMap = _pipe(_map, _filter(function(x) { return x != undefined; }));
  * non-same values for that key appear, a list of those values is applied to
  * the supplied `resolveFn` to produce a value for that key. Order not guaranteed.
  *
- * @example mergeAllBy(C.fold((a, b) => a + b), [{x: 1, z:5}, {y: 2, z: 6}]); //=> {x: 1, y: 2, z: 11}
+ * @example mergeAllBy(C.accum((a, b) => a + b), [{x: 1, z:5}, {y: 2, z: 6}]); //=> {x: 1, y: 2, z: 11}
  *
  * @param {Function} resolveFn - If multiple objs have non-same values for the
  *                same key, this function is applied to a list of those values.

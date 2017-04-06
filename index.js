@@ -6,7 +6,7 @@ module.exports = {
     filter: require('./src/_filter'),
     flatMap: require('./src/_flatMap'),
     flatten: require('./src/_flatten'),
-    fold: require('./src/_fold'),
+    accum: require('./src/_accum'),
     majority: require('./src/_majority'),
     map: require('./src/_map'),
     mergeAllBy: require('./src/_mergeAllBy'),

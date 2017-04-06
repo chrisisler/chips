@@ -5,22 +5,20 @@ var _curry = require('./_curry');
  * of the data structure (from left-to-right) while `predicate` returns true
  * to produce a final value.
  *
- * `Reducable` must have a .length property.
- *
  * @param {Function} predicate - Determines whether to continue accumulating or not.
- * @param {Function} reducer - Applied to `accumulator` and each `reducable[i]` to produce a result.
- * @param {*} accumulator - Accumulated value.
- * @param {*} reducable - The data structure to reduce.
- * @returns {*} - Value that results from the reduction.
+ * @param {Function} reducer - Applied to `accumulator` and each `lengthable[i]` to produce a result.
+ * @param {a} accumulator - Accumulated value.
+ * @param {Array|Arguments|String} lengthable - The data structure to reduce.
+ * @returns {a} - Value that results from the reduction.
  */
-module.exports = _curry(function _reduceWhile(predicate, reducer, accumulator, reducable) {
+module.exports = _curry(function _reduceWhile(predicate, reducer, accumulator, lengthable) {
     var index = 0;
-    var len = reducable.length;
+    var len = lengthable.length;
     while (index < len) {
-        if (!predicate(accumulator, reducable[index])) {
+        if (!predicate(accumulator, lengthable[index])) {
             break;
         }
-        accumulator = reducer(accumulator, reducable[index]);
+        accumulator = reducer(accumulator, lengthable[index]);
         index += 1;
     }
     return accumulator;

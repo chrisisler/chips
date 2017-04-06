@@ -7,12 +7,12 @@ describe('reduceWhile', function() {
     var add = function(x, y) { return x + y; };
     var nums = [ 1, 2, 3, 4 ];
 
-    it('applies `reducer` to `reducable` while `predicate` is true to return a result', function() {
+    it('applies `reducer` to `lengthable` while `predicate` is true to return a result', function() {
         assert.deepEqual(C.reduceWhile(lessThan3, add, 0, nums), 3 );
         assert.deepEqual(C.reduceWhile(lessThan4, add, 0, nums), 6);
     });
 
-    it('returns the supplied `accumulator` if the given `reducable` empty', function() {
+    it('returns the supplied `accumulator` if the given `lengthable` empty', function() {
         assert.strictEqual(C.reduceWhile(lessThan3, add, 0, []), 0);
         assert.deepEqual(C.reduceWhile(lessThan3, C.concat, [], []), []);
         assert.strictEqual(C.reduceWhile(lessThan3, add, '', ''), '');

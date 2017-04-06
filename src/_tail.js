@@ -1,8 +1,15 @@
+var _is = require('./util/_is');
+
 /**
- * Note: Array.from translates array-like objects to arrays.
- * @param {Array} list
- * @returns {Array} - List containing all elements except the first element.
+ * Returns the given data containing every element or character except the zeroth.
+ *
+ * Note: Array.from translates array-like objects (arguments) to arrays.
+ *
+ * @param {Array|String} group
+ * @returns {Array|String}
  */
-module.exports = function _tail(list) {
-    return Array.from(list).slice(1);
+module.exports = function _tail(group) {
+    return _is('Arguments', group) || Array.isArray(group)
+        ? Array.from(group).slice(1)
+        : group.slice(1);
 };

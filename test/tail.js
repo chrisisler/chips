@@ -2,14 +2,16 @@ var assert = require('assert');
 var C = require('../index');
 
 describe('tail', function() {
-    var nums = [ 1, 2, 3 ];
-    var expected = [ 2, 3 ];
-
-    it('returns a new list containing all but the first (zeroth) element', function() {
-        assert.deepEqual(C.tail(nums), expected);
+    it('returns a new list containing all but the zeroth element', function() {
+        assert.deepEqual(C.tail([ 1, 2, 3 ]), [ 2, 3 ]);
     });
 
-    it('returns an empty list if an empty list was given', function() {
+    it('returns a new list containing all but the zeroth element', function() {
+        assert.deepEqual(C.tail('abc'), 'bc');
+    });
+
+    it('returns an empty list/string if an empty list/string was given', function() {
         assert.deepEqual([], []);
+        assert.deepEqual('', '');
     });
 });
