@@ -1,4 +1,5 @@
 module.exports = {
+    accum: require('./src/_accum'),
     allPass: require('./src/_allPass'),
     alterProp: require('./src/_alterProp'),
     concat: require('./src/_concat'),
@@ -6,7 +7,6 @@ module.exports = {
     filter: require('./src/_filter'),
     flatMap: require('./src/_flatMap'),
     flatten: require('./src/_flatten'),
-    accum: require('./src/_accum'),
     majority: require('./src/_majority'),
     map: require('./src/_map'),
     mergeAllBy: require('./src/_mergeAllBy'),

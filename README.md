@@ -11,6 +11,13 @@ Chips delivers powerful abstractions making it effortless to write declarative l
 
 ## API
 
+#### accum :: `C.accum(fn, lengthable)`
+In this library, `accum` is a shorthand for `reduce` where an accumulator value is _not_ supplied but taken from `lengthable[0]`.
+```javascript
+C.accum((sum, n) => sum + n, [ 1, 2, 3 ]); //=> 6
+const map = (fn, array) => C.accum((arr, x) => C.concat(arr, [ fn(x) ]), array);
+```
+
 #### allPass :: `C.allPass(predicates, value)`
 Returns true if `value` returns true when applied to each function in `predicates`.
 ```javascript
@@ -58,13 +65,6 @@ C.flatMap(x => [ x, x * x ], [ 3, 4 ]); //=> [ 3, 9, 4, 16 ]
 Returns a copy of the given list flattened to one-dimension (picked out sub-lists).
 ```javascript
 C.flatten([ 1, [ 2, [], [ 3 ] ] ]); //=> [ 1, 2, 3 ]
-```
-
-#### accum :: `C.accum(fn, lengthable)`
-In this library, `accum` is a shorthand for `reduce` where an accumulator value is _not_ supplied but taken from `lengthable[0]`.
-```javascript
-C.accum((sum, n) => sum + n, [ 1, 2, 3 ]); //=> 6
-const map = (fn, array) => C.accum((arr, x) => C.concat(arr, [ fn(x) ]), array);
 ```
 
 #### majority :: `C.majority(predicates, values)`
