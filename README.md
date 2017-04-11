@@ -61,17 +61,17 @@ Returns the flattened result of applying a function to a list.
 C.flatMap(x => [ x, x * x ], [ 3, 4 ]); //=> [ 3, 9, 4, 16 ]
 ```
 
+#### flatten :: `C.flatten(list)`
+Returns a copy of the given list flattened to one-dimension (picked out sub-lists).
+```javascript
+C.flatten([ 1, [ 2, [], [ 3 ] ] ]); //=> [ 1, 2, 3 ]
+```
+
 ### isIn :: `C.isIn(list, value)`
 Returns true if value is in the list and false otherwise.
 ```javascript
 C.isIn([ 1, 2, 3 ], 5); //=> false
 C.isIn([ 1, 2, 3 ], 1); //=> true
-```
-
-#### flatten :: `C.flatten(list)`
-Returns a copy of the given list flattened to one-dimension (picked out sub-lists).
-```javascript
-C.flatten([ 1, [ 2, [], [ 3 ] ] ]); //=> [ 1, 2, 3 ]
 ```
 
 #### majority :: `C.majority(predicates, values)`

@@ -11,5 +11,5 @@ var _curry2 = require('./_curry2');
  * @returns {Boolean} - If `xs` includes `x`.
  */
 module.exports = _curry2(function _isIn(xs, x) {
-    return xs.includes(x);
+    return Array.prototype.includes.call(xs, x);
 });

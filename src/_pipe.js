@@ -15,7 +15,7 @@ module.exports = function _pipe() {
     var fns = arguments;
     return function() {
         return _reduce(function(accumResult, fn) {
-            return fn.call(this, accumResult);
+            return fn(accumResult);
         }, fns[0].apply(this, arguments), _tail(fns));
     };
 };
