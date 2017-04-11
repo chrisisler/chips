@@ -5,6 +5,13 @@ var _uniq = require('./_uniq');
 var _filter = require('./_filter');
 var _pipe = require('./_pipe');
 
+/**
+ * Private helper function.
+ * @private
+ * @param {Function} - A function to apply to each value in the array.
+ * @param {Array} - A list of values to map and then filter.
+ * @returns {Array} - The mapped result of the given list with all undefined values removed.
+ */
 var trueMap = _pipe(_map, _filter(function(x) { return x != undefined; }));
 
 /**
