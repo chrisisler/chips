@@ -1,5 +1,6 @@
 var _curry2 = require('./_curry2');
 var _curry3 = require('./_curry3');
+var _slice = require('./util/_slice');
 
 /**
  * Returns a new function that, when called with subset of the original
@@ -30,7 +31,7 @@ module.exports = function _curry(fn) {
  */
 function autoCurry(fn, receivedArgs) {
     return function() {
-        var combinedArgs = Array.from(receivedArgs).concat(Array.from(arguments));
+        var combinedArgs = _slice(receivedArgs).concat(_slice(arguments));
         return combinedArgs.length === fn.length
             ? fn.apply(this, combinedArgs)
             : autoCurry(fn, combinedArgs);

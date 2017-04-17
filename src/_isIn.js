@@ -1,15 +1,16 @@
 var _curry2 = require('./_curry2');
 
 /**
- * Returns true if the value `x` is in the list `xs`, false otherwise.
- * TODO: Provide a custom implementation: `if (xs.includes === void 0)`
+ * Returns true if the value `x` is the list/string `group`, false otherwise.
  *
  * @example isIn([ 1, 2, 3 ], 5); //=> false
  * @example isIn([ 1, 2, 3 ], 2); //=> true
- * @param {Array} xs - A list of values.
+ * @param {Array|String} group
  * @param {*} x - A value.
- * @returns {Boolean} - If `xs` includes `x`.
+ * @returns {Boolean} - If `group` includes `x`.
  */
-module.exports = _curry2(function _isIn(xs, x) {
-    return Array.prototype.includes.call(xs, x);
+module.exports = _curry2(function _isIn(group, x) {
+    return Array.isArray(group)
+        ? Array.prototype.includes.call(group, x)
+        : String.prototype.includes.call(group, x);
 });

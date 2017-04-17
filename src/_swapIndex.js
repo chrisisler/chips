@@ -1,4 +1,5 @@
 var _curry3 = require('./_curry3');
+var _slice = require('./util/_slice');
 
 /**
  * Return the given list with the elements at the two indexes swapped.
@@ -9,7 +10,7 @@ var _curry3 = require('./_curry3');
  * @returns {Array}
  */
 module.exports = _curry3(function _swapIndex(index1, index2, list) {
-    var listCopy = Array.from(list);
+    var listCopy = _slice(list);
     var elem1 = listCopy[index1];
     var elem2 = listCopy[index2];
 
