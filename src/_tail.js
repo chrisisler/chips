@@ -1,5 +1,3 @@
-var _is = require('./util/_is');
-
 /**
  * Returns the given data containing every element or character except the zeroth.
  *
