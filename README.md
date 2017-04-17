@@ -8,6 +8,8 @@ Chips delivers powerful abstractions making it effortless to write declarative l
 
 ## Roadmap
 * Normalize @examples
+  * curry.js
+* Allow `zipBy` to `zip` normally by giving a `null` or `undefined` `fn` argument (use `flatten` in implementation).
 
 ## API
 

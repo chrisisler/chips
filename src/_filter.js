@@ -8,6 +8,7 @@ var _concat = require('./_concat');
  * @example filter(x => x === 1, { a: 1, b: 2 }); //=> { a: 1 }
  * @example filter(x => x >= 3, [ 1, 2, 3 ]); //=> [ 3 ]
  * @example filter(x => x === x.toUpperCase(), 'FooBar'); //=> 'FB'
+ *
  * @param {Function} predicate - Returns true/false to retain/reject each value.
  * @param {Array|Object|String} filterable
  * @returns {Array|Object|String}

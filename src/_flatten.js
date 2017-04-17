@@ -6,6 +6,7 @@ var _reduce = require('./_reduce');
  * Returns a copy of the given list flattened to one-dimension (plucked out sub-lists).
  *
  * @example _flatten([ 1, [ 2, [ 3 ] ] ]); //=> [ 1, 2, 3 ]
+ *
  * @param {Array} xs
  * @returns {Array}
  */

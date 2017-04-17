@@ -4,7 +4,8 @@ var _assign = require('./util/_assign');
 /**
  * Returns a new object by applying the given function to the specified property.
  *
- * @example _alterProp('name', toUpper, { name: 'rufus' }); //=> { name: 'RUFUS' }
+ * @example alterProp('name', toUpper, { name: 'rufus' }); //=> { name: 'RUFUS' }
+ *
  * @param {String} prop - Property of object to alter.
  * @param {Function} fn - Applied to obj[prop].
  * @param {Object} obj - Object to alter.

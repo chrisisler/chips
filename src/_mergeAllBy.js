@@ -2,16 +2,19 @@ var _curry2 = require('./_curry2');
 var _map = require('./_map');
 var _prop = require('./_prop');
 var _uniq = require('./_uniq');
-var _filter = require('./_filter');
-var _pipe = require('./_pipe');
 
 /**
  * Private helper function.
+ *
+ * @example trueMap(x => x.val, [ { val: false }, { val: null }, { val: 3 } ]); // => [ false, 3 ]
+ *
  * @private
  * @param {Function} - A function to apply to each value in the array.
  * @param {Array} - A list of values to map and then filter.
  * @returns {Array} - The mapped result of the given list with all undefined values removed.
  */
+var _filter = require('./_filter');
+var _pipe = require('./_pipe');
 var trueMap = _pipe(_map, _filter(function(x) { return x != undefined; }));
 
 /**

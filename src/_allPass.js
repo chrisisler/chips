@@ -3,7 +3,8 @@ var _curry2 = require('./_curry2');
 /**
  * Return true if the given value satisifies each function in `predicates`.
  *
- * @example _allPass([ x => x % 2 === 1, x => x === 3 ], 3); //=> true
+ * @example allPass([ x => x % 2 === 1, x => x === 3 ], 3); //=> true
+ *
  * @param {Array[Function]} predicates - Each fn is applied to `x`; returns a Boolean.
  * @param {*} x - Any value.
  * @returns Boolean - True if each predicate function returns true when applied to `x`.

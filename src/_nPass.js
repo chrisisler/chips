@@ -9,6 +9,7 @@ var _curry3 = require('./_curry3');
  * Supports the same "filterable" data types that _filter does (arr, obj, str).
  *
  * @example _nPass(3, x => x % 2 === 1, [ 1, 2, 3, 4, 5 ]); //=> true
+ *
  * @param {Number} N - Number of times the `predicate` must return true.
  * @param {Function} predicate - Produces a Boolean for each `filterable` element.
  * @param {Array|String|Object} filterable

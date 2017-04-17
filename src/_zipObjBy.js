@@ -7,9 +7,7 @@ var _reduce = require('./_reduce');
  *
  * Note: Length of returned object is truncated to the length of the `keys`.
  *
- * @example
- *     var half = x => x / 2;
- *     _zipObjBy(half, [ 'k1', 'k2' ], [ 4, 6 ]); //=> { k1: 2, k2: 3 }
+ * @example _zipObjBy(x => x / 2, [ 'k1', 'k2' ], [ 4, 6 ]); //=> { k1: 2, k2: 3 }
  *
  * @param {Function} fn - Applied to each value in `val`.
  * @param {Array[String]} keys - A list of strings, the keys of the new object.

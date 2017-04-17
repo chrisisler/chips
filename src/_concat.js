@@ -8,6 +8,7 @@ var _reduce = require('./_reduce');
  *
  * @example concat([ 1, 2 ], [ 3, 4 ]); //=> [ 1, 2, 3, 4 ]
  * @example concat('dogs', ' and cats'); //=> 'dogs and cats'
+ *
  * @param {Array|String} a
  * @param {Array|String} b
  * @returns {Array|String} - The concatenated result.

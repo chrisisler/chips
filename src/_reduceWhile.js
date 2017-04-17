@@ -5,6 +5,8 @@ var _curry = require('./_curry');
  * of the data structure (from left-to-right) while `predicate` returns true
  * to produce a final value.
  *
+ * @example reduceWhile((acc, x) => acc > 10, (x, y) => x + y, 0, [ 2, 4, 6, 8, 10 ]); //=> 12
+ *
  * @param {Function} predicate - Determines whether to continue accumulating or not.
  * @param {Function} reducer - Applied to `accumulator` and each `lengthable[i]` to produce a result.
  * @param {a} accumulator - Accumulated value.

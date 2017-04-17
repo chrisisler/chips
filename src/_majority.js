@@ -6,6 +6,7 @@ var _is = require('./util/_is');
  * Returns true if at least half of the values satisfy each function.
  *
  * @example _majority([ x => x % 2 === 1, x => x === 3 ], [ 3, 3, 2 ]); //=> true
+ *
  * @param {Function|Array[Function]} - Applied to each value to produce a Boolean.
  * @param {Array} xs - A list of values.
  * @returns Boolean - If a majority (half or more) of the values in `xs` return
