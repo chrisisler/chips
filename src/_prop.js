@@ -11,5 +11,5 @@ var _curry2 = require('./_curry2');
  * @returns {*}
  */
 module.exports = _curry2(function _prop(key, obj) {
-    return obj[key]
+    return obj[key];
 });

@@ -9,39 +9,83 @@ RED2='\033[1;31m'
 BLUE='\033[0;34m'
 NO_COLOR='\033[0m'
 
-exitCode=0
+# Helper functions: input a string, output a colorized string.
+success() {
+    printf "${BLUE}✓ ${1}${NO_COLOR}\n"
+}
+failure() {
+    printf "${RED}× ${1}${NO_COLOR}\n"
+}
 
-# checkComments() ensures that each js file in src has: @example, @param, and @returns.
-checkComments() {
-    # echo "Checking comments..."
+# make sure that `npm install` has been done and a node_modules directory exists
+installDependencies() {
+    if [ ! -d "$(pwd)/node_modules" ]; then
+        printf "Installing dependencies..."
+        npm install &>/dev/null
+
+        if [[ "${?}" != 0 ]]; then
+            failure "\nERR: Problem encountered when doing 'npm install'"
+            exit 1
+        else
+            printf " done."
+        fi
+    fi
+}
+
+# Ensure that each .js file in src/ (and src/util/) has an @example, @param, and a @returns
+verifyComments() {
+    local exitCode=0
     local comments=("@example" "@param" "@returns")
-
     for jsFile in $(find ./src -name "_*.js"); do
         for comment in "${comments[@]}"; do
-            if ! grep -q "$comment" "$jsFile"; then
-                printf "${RED}ERR: ${jsFile:6} is missing ${RED2}$comment${NO_COLOR}\n"
+            if ! grep -q "${comment}" "${jsFile}"; then
+                failure "ERR: ${jsFile:6} is missing ${RED2}${comment}"
                 exitCode=1
             fi
         done
     done
 
-    if [[ "$exitCode" == 0 ]]; then
-        printf "${BLUE}Comments check passes.${NO_COLOR}\n"
+    if [[ "${exitCode}" != 0 ]]; then
+        exit "${exitCode}"
     else
-        exit "$exitCode"
+        success "Comments verified."
     fi
 }
 
-runLinterAndTests() {
-    lintOutput="$(npm run -s lint 2>/dev/null)"
-    if [[ "${lintOutput}" = "" ]]; then
-    # if [[ "$?" == 0  ]]; then
-        # printf "${RED}ERR: Lint failed:${NO_COLOR}\n$lintOutput"
-        echo "No lint errors."
-    else
-        echo "Error: there are lint errors."
-    fi
+runLinter() {
+    # The below command will exit this script on its own (w/o an explicit
+    # `exit 1`) if there are lint errors. It will also display the errors,
+    # so it does all the heavy lifting by itself (thanks npm and eslint).
+    npm run -s lint
+    success "Linter satisfied."
 }
 
-# checkComments
-runLinterAndTests
+runTests() {
+    # `npm` commands will error and exit on their own, unless in a subshell.
+    local testResults="$(npm -s test)"
+    local testsFailed="$(echo -n "${testResults}" | grep -q "failing" && echo -n "true")"
+
+    if [[ "${testsFailed}" == "true" ]]; then
+        failure "Tests failed."
+        printf "${testResults}\n"
+        exit 1
+    fi
+
+    npm -s test &>/dev/null
+
+    success "Tests passed."
+
+    # if [[ "${?}" != 0 ]]; then
+    #     printf "${testResults}\n"
+    #     exit 1
+    # else
+    #     success "Tests passed."
+    # fi
+}
+
+printf "\n"
+
+installDependencies
+verifyComments
+runLinter
+runTests
