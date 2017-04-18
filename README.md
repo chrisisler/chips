@@ -1,6 +1,8 @@
 # Chips
 Chips is a functional JS library promoting succinct and immutable code.
 
+[![Build Status](https://travis-ci.org/chrisisler/chips.svg?branch=master)](https://travis-ci.org/chrisisler/chips)
+
 Chips delivers powerful abstractions making it effortless to write declarative logic that is simple to understand and painless to maintain.
 * Compose methods to build custom modular functions.
 * Each function is [curried](https://www.sitepoint.com/currying-in-functional-javascript/) to provide a flexible API.
