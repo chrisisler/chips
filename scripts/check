@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+# https://robots.thoughtbot.com/shell-script-suggestions-for-speedy-setups
+# Exit if any subcommand fails.
+set -e
+
+RED='\033[0;31m'
+RED2='\033[1;31m'
+BLUE='\033[0;34m'
+NO_COLOR='\033[0m'
+
+exitCode=0
+
+# checkComments() ensures that each js file in src has: @example, @param, and @returns.
+checkComments() {
+    # echo "Checking comments..."
+    local comments=("@example" "@param" "@returns")
+
+    for jsFile in $(find ./src -name "_*.js"); do
+        for comment in "${comments[@]}"; do
+            if ! grep -q "$comment" "$jsFile"; then
+                printf "${RED}ERR: ${jsFile:6} is missing ${RED2}$comment${NO_COLOR}\n"
+                exitCode=1
+            fi
+        done
+    done
+
+    if [[ "$exitCode" == 0 ]]; then
+        printf "${BLUE}Comments check passes.${NO_COLOR}\n"
+    else
+        exit "$exitCode"
+    fi
+}
+
+runLinterAndTests() {
+    lintOutput="$(npm run -s lint 2>/dev/null)"
+    if [[ "${lintOutput}" = "" ]]; then
+    # if [[ "$?" == 0  ]]; then
+        # printf "${RED}ERR: Lint failed:${NO_COLOR}\n$lintOutput"
+        echo "No lint errors."
+    else
+        echo "Error: there are lint errors."
+    fi
+}
+
+# checkComments
+runLinterAndTests

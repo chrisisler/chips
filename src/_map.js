@@ -11,8 +11,8 @@ var _reduce = require('./_reduce');
  * @example map(x => x * 2, 100); //=> 200
  *
  * @param {Function} fn - Applied to the data structure.
- * @param {Array|Object|String|Function|Number} mappable
- * @returns {Array|Object|String|Function|Number}
+ * @param {Array|Object|String|Function} mappable
+ * @returns {Array|Object|String|Function}
  */
 module.exports = _curry2(function _map(fn, mappable) {
     switch(Object.prototype.toString.call(mappable)) {

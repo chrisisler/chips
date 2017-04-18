@@ -6,6 +6,8 @@ var _slice = require('./util/_slice');
  * Returns a new function that, when called with subset of the original
  * functions arguments, returns a new function.
  *
+ * @example curry((a, b, c) => a + b + c)(1)(2)(3); //=> 6
+ *
  * @param {Function} fn - Function to curry.
  * @returns {Function} - `fn`, curried.
  */

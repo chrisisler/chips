@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "test": "clear && mocha",
-    "lint": "eslint ."
+    "lint": "eslint src/_*.js src/util/_*.js index.js",
+    "check": "bash scripts/check"
   },
   "repository": {
     "type": "git",
