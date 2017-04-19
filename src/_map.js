@@ -21,19 +21,23 @@ module.exports = _curry2(function _map(fn, mappable) {
                 accumList[accumList.length] = fn(element);
                 return accumList;
             }, [], mappable);
+
         case '[object Object]':
             return _reduce(function(accumObj, key) {
                 accumObj[key] = fn(mappable[key], key);
                 return accumObj;
             }, {}, Object.keys(mappable));
+
         case '[object String]':
             return _reduce(function(accumStr, character) {
                 return accumStr + fn(character);
             }, '', mappable);
+
         case '[object Function]': // Pipe the functions.
             return function() {
-                return mappable.call(this, fn.apply(this, arguments));
+                return mappable(fn.apply(this, arguments));
             };
+
         default:
             throw new TypeError('Unsupported type for mappable.');
     }

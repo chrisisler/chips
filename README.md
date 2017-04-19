@@ -159,7 +159,7 @@ Returns a copy of the given list containing every element except the zeroth.
 C.tail([ 1, 2, 3 ]); //=> [ 2, 3 ]
 ```
 
-###`C.uniq(list)`
+### `C.uniq(list)`
 Returns a list containing all non-same values.
 ```javascript
 C.uniq([ 2, 2, 4, 5 ]); //=> [ 2, 4, 5 ]
