@@ -1,4 +1,4 @@
-## API
+# API
 
 #### C.accum(fn, lengthable)
 This function is a shortcut for `reduce` where an initial accumulator is taken from `lengthable[0]`.
