@@ -1,15 +1,15 @@
-var _curry2 = require('./_curry2');
+var _curry2 = require('./util/_curry2');
 
 /**
- * Returns true if the value `x` is the list `xs`, false otherwise.
+ * Returns true if the `val` is the list `vals`, false otherwise.
  *
- * @example isIn([ 1, 2, 3 ], 5); //=> false
- * @example isIn([ 1, 2, 3 ], 3); //=> true
+ * @example C.isIn([ 1, 2, 3 ], 5); //=> false
+ * @example C.isIn([ 1, 2, 3 ], 3); //=> true
  *
- * @param {Array} xs
- * @param {*} x - A value.
- * @returns {Boolean} - If `xs` includes `x`.
+ * @param {Array[*]} vals
+ * @param {*} val - Any value.
+ * @returns {Boolean} - If `vals` includes `val`.
  */
-module.exports = _curry2(function _isIn(xs, x) {
-    return Array.prototype.indexOf.call(xs, x) !== -1;
+module.exports = _curry2(function _isIn(vals, val) {
+    return Array.prototype.indexOf.call(vals, val) !== -1;
 });

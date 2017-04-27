@@ -1,35 +1,25 @@
-var _allPass = require('./_allPass');
-var _curry2 = require('./_curry2');
-var _is = require('./util/_is');
+var _curry2 = require('./util/_curry2');
 
 /**
- * Returns true if at least half of the values satisfy each function.
+ * Returns true if a majority of the list elements satisfy the predicate.
  *
- * @example _majority([ x => x % 2 === 1, x => x === 3 ], [ 3, 3, 2 ]); //=> true
+ * @example C.majority(s => s.endsWith('e'), [ 'same', 'name', 'no' ]); //=> true
+ * @example C.majority(s => s.endsWith('e'), [ 'foo', 'bar', 'me' ]); //=> false
  *
- * @param {Function|Array[Function]} - Applied to each value to produce a Boolean.
- * @param {Array} xs - A list of values.
- * @returns Boolean - If a majority (half or more) of the values in `xs` return
- *                      true when applied to each `predicates` function.
+ * @param {Function(*) -> Boolean} predicate - Applied to each value in `vals` to produce a Boolean.
+ * @param {Array[*]} vals - A list of values.
+ * @returns {Boolean} - True if `predicate` returns true for more than half of the values in `vals`.
  */
-module.exports = _curry2(function _majority(predicates, xs) {
+module.exports = _curry2(function _majority(predicate, vals) {
+    var len = vals.length;
     var index = 0;
-    var len = xs.length;
-    var numValsPass = 0;
-    var majorityLen = Math.ceil(len / 2); // The number of values that must pass.
-
-    if (_is('Function', predicates)) {
-        predicates = [ predicates ];
-    }
-
+    var moreThanHalf = len % 2 === 0 ? (len / 2) + 1 : Math.ceil(len / 2);
+    var numValuesPass = 0;
     while (index < len) {
-        if (_allPass(predicates, xs[index])) {
-            numValsPass += 1;
-        }
-        if (numValsPass === majorityLen) {
-            return true;
+        if (predicate(vals[index])) {
+            numValuesPass += 1;
         }
         index += 1;
     }
-    return false;
+    return numValuesPass >= moreThanHalf;
 });

@@ -9,6 +9,7 @@ module.exports = {
     flatten: require('./src/_flatten'),
     isIn: require('./src/_isIn'),
     majority: require('./src/_majority'),
+    majorityPass: require('./src/_majorityPass'),
     map: require('./src/_map'),
     mergeAllBy: require('./src/_mergeAllBy'),
     nPass: require('./src/_nPass'),

@@ -1,15 +1,17 @@
-var _curry2 = require('./_curry2');
-var _curry3 = require('./_curry3');
+var _curry2 = require('./util/_curry2');
+var _curry3 = require('./util/_curry3');
 var _slice = require('./util/_slice');
 
 /**
- * Returns a new function that, when called with subset of the original
+ * Returns a new function that, when called with a subset of the original
  * functions arguments, returns a new function.
  *
- * @example curry((a, b, c) => a + b + c)(1)(2)(3); //=> 6
+ * @example C.curry((a, b, c, d, e) => a + b + c + d + e)(1)(2)(3)(5)(6); //=> 17
+ * @example C.curry((a, b, c) => a + b + c)(1)(2)(3); //=> 6
+ * @example C.curry((a, b) => a + b)(1)(2); //=> 3
  *
- * @param {Function} fn - Function to curry.
- * @returns {Function} - `fn`, curried.
+ * @param {Function(*, *, ..., *) -> *} fn - N-ary function to curry.
+ * @returns {Function(*)(*)(...)(*) -> *}
  */
 module.exports = function _curry(fn) {
     switch (fn.length) {
@@ -23,14 +25,16 @@ module.exports = function _curry(fn) {
     }
 };
 
-/**
- * Repeatedly returns a function until `fn` receives a number of arguments equal to its arity.
- *
- * @private
- * @param {Function} fn - The function to curry.
- * @param {Arguments} receivedArgs - The arguments received so far.
- * @returns {Function}
- */
+// NOTE: Double-slash comments are used here so this functions docs/comments
+// are not parsed and included by the scripts/generateAPIDocs script.
+//
+// Repeatedly returns a function until `fn` receives a number of arguments
+// equal to its arity.
+//
+// @private
+// @param {Function(*, *, ..., *) -> *} fn - The function to curry.
+// @param {Arguments} receivedArgs - The arguments received so far.
+// @returns {Function}
 function autoCurry(fn, receivedArgs) {
     return function() {
         var combinedArgs = _slice(receivedArgs).concat(_slice(arguments));

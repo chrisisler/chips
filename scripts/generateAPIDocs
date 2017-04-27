@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+# This script generates API documentation for each exported function in src/
+# Files in src/util/ are explicitly excluded.
+
+# https://robots.thoughtbot.com/shell-script-suggestions-for-speedy-setups
+# Exit if any subcommand fails.
+set -e
+
+APIFile="$(pwd)/API.md"
+
+ensureAPIFileExists() {
+    local APIFile="${1}"
+    if [ -f "${APIFile}" ]; then # If file exists:
+        > "${APIFile}" # Clear contents of the file.
+    else
+        touch "${APIFile}"
+    fi
+}
+
+# Grab the surrounding parenthesis and parameter names from each function (separated by newline) (alphabetical order).
+getAPIHeader() {
+    local file="${1}"
+    local fileNoExt="${2}"
+    local params="$(cat "${file}" | grep "module.exports" | sed -e 's/^.*function //g' -e 's/ {$//g' -e 's/_[a-z0-9A-Z]*//g')"
+    local APIHeader="#### C.${fileNoExt}${params}"
+    printf "%s" "${APIHeader}"
+}
+
+getAPIDescription() {
+    local file="${1}"
+    local APIDescription="$(cat "${file}" | grep -E "^ \* [^@]" | sed 's/^ \* //g')"
+    printf "%s" "${APIDescription}"
+}
+
+getAPIExamples() {
+    local file="${1}"
+    local APIExamples="$(cat "${file}" | grep -E "^ \* @example " | sed -e 's/^ \* @example //g')"
+    local APIExamples="$(printf '```javascript\n%s\n```' "${APIExamples}")"
+    printf "%s" "${APIExamples}"
+}
+
+generateAPIDocs() {
+    local APIFile="${1}"
+
+    printf "## API\n\n" >> "${APIFile}"
+
+    for file in $(find ./src -maxdepth 1 -name "_*.js"); do
+
+        local baseFile="${file:7}" # Remove "./src/_" from the filename.
+        local fileNoExt="${baseFile%.js}" # Remove "./src/_" and ".js" from the filename.
+
+        local APIHeader="$(getAPIHeader "${file}" "${fileNoExt}")"
+        local APIDescription="$(getAPIDescription "${file}")"
+        local APIExamples="$(getAPIExamples "${file}")"
+
+        printf "%s\n%s\n%s\n\n" "${APIHeader}" "${APIDescription}" "${APIExamples}" >> "${APIFile}"
+    done
+}
+
+ensureAPIFileExists "${APIFile}"
+generateAPIDocs "${APIFile}"

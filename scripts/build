@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# This script does the following things and shows a red error and exits if any of the steps fail.
+# 1. Installs NPM dependencies if not done so yet.
+# 2. Ensures each file in src/ contains an @example, @param, and a @returns in the comments.
+# 3. Runs the linter (eslint).
+# 4. Runs the unit tests.
+
 # https://robots.thoughtbot.com/shell-script-suggestions-for-speedy-setups
 # Exit if any subcommand fails.
 set -e
@@ -17,13 +23,13 @@ failure() {
     printf "${RED}× ${1}${NO_COLOR}\n"
 }
 
-# make sure that `npm install` has been done and a node_modules directory exists
+# Make sure that `npm install` has been done and a node_modules directory exists.
 installDependencies() {
     if [ ! -d "$(pwd)/node_modules" ]; then
         printf "Installing dependencies..."
         npm install &>/dev/null
 
-        if [[ "${?}" != 0 ]]; then
+        if [[ "${?}" != 0 ]]; then # Check if npm install gave a non-zero exit code.
             failure "\nERR: Problem encountered when doing 'npm install'"
             exit 1
         else
@@ -32,7 +38,10 @@ installDependencies() {
     fi
 }
 
-# Ensure that each .js file in src/ (and src/util/) has an @example, @param, and a @returns
+# TODO: Ensure every .js file in src/ and src/util/ has a test file in test/
+# verifyTestsExist() {}
+
+# Ensure that each .js file in src/ (and src/util/) has an @example, @param, and a @returns.
 verifyComments() {
     local exitCode=0
     local comments=("@example" "@param" "@returns")
@@ -74,13 +83,17 @@ runTests() {
     npm -s test &>/dev/null
 
     success "Tests passed."
+}
 
-    # if [[ "${?}" != 0 ]]; then
-    #     printf "${testResults}\n"
-    #     exit 1
-    # else
-    #     success "Tests passed."
-    # fi
+generateAPIDocsWrapper() {
+    . "$(pwd)/scripts/generateAPIDocs"
+
+    if [[ "${?}" != 0 ]]; then # Check if previous command gave a non-zero (bad) exit code.
+        failure "\nERR: Problem encountered when generating API documentation."
+        exit 1
+    else
+        success "API.md docs generated."
+    fi
 }
 
 printf "\n"
@@ -89,3 +102,4 @@ installDependencies
 verifyComments
 runLinter
 runTests
+generateAPIDocsWrapper

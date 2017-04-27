@@ -4,16 +4,14 @@ var _curry2 = require('./_curry2');
  * Returns a new function that when called with a subset of the original
  * functions arguments, returns a new function.
  *
- * @example
- *     var add3 = (a, b, c) => a + b + c;
- *     var curriedAdd3 = curry3(add3);
- *     curriedAdd3(1)(2)(3); //=> 6
- *     curriedAdd3(1, 2)(3); //=> 6
- *     curriedAdd3(1)(2, 3); //=> 6
- *     curriedAdd3(1, 2, 3); //=> 6
+ * @example _curry3((a, b, c) => a + b + c)(1)(2)(3); //=> 6
+ * @example _curry3((a, b, c) => a + b + c)(1, 2)(3); //=> 6
+ * @example _curry3((a, b, c) => a + b + c)(1)(2, 3); //=> 6
+ * @example _curry3((a, b, c) => a + b + c)(1, 2, 3); //=> 6
  *
- * @param {Function} fn - Function to curry.
- * @returns {Function}
+ * @private
+ * @param {Function(*, *, *) -> *} fn - Ternary function to curry.
+ * @returns {Function(*)(*)(*) -> *}
  */
 module.exports = function _curry3(fn) {
     return function arity3(a1, a2, a3) {

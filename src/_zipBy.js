@@ -1,21 +1,22 @@
-var _curry3 = require('./_curry3');
-var _flatten = require('./_flatten');
+var _curry3 = require('./util/_curry3');
+var _concat = require('./_concat');
+var _accum = require('./_accum');
+
+var flattenOnce = _accum(_concat);
 
 /**
  * Return a new list by applying the given function to each equally-positioned
  * element in the given lists. Truncating to the list of shorter length.
+ * If `fn` is falsy, each equal-index "pair" is inserted like so: [xs[i], ys[i]],
+ * then the outputted list is flattened by one dimension before it is returned.
  *
- * If `fn` is falsy, use a pairing function then flatten the `result` array.
- * This allows for: @returns {Array} - [ xs[0], ys[0], ..., xs[i], ys[i] ]
- * Otherwise:  @returns {Array} - [ f(xs[0], ys[0]), ..., f(xs[i], ys[i]) ]
+ * @example C.zipBy((x, y) => x + y, [ 1, 3, 5 ], [ 2, 4, 6 ]); //=> [ 3, 7, 11 ]
+ * @example C.zipBy(null, [ 1, 3, 5 ], [ 2, 4, 6 ]); //=> [ 3, 7, 11 ]
  *
- * @example zipBy((x, y) => x + y, [ 1, 3, 5 ], [ 2, 4, 6 ]); //=> [ 3, 7, 11 ]
- * @example zipBy(null, [ 1, 3, 5 ], [ 2, 4, 6 ]); //=> [ 3, 7, 11 ]
- *
- * @param {Array} fn - Applied to each element in the given lists.
- * @param {Array} xs
- * @param {Array} ys
- * @returns {Array}
+ * @param {Function(*, *) -> *} fn - Applied to each element in the given lists.
+ * @param {Array[*]} xs - A list of values.
+ * @param {Array[*]} ys - A list of values.
+ * @returns {Array[*]}
  */
 module.exports = _curry3(function _zipBy(fn, xs, ys) {
     var doFlatZip = !fn;
@@ -29,5 +30,5 @@ module.exports = _curry3(function _zipBy(fn, xs, ys) {
         result[index] = fn(xs[index], ys[index]);
         index += 1;
     }
-    return doFlatZip === true ? _flatten(result) : result;
+    return doFlatZip === true ? flattenOnce(result) : result;
 });

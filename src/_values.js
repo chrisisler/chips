@@ -4,10 +4,10 @@ var _reduce = require('./_reduce');
 /**
  * Returns a list of the own properties of the given object.
  *
- * @example _values({name: 'bob', age: 44, job: 'chef'}); //=> ['bob', 44, 'chef']
+ * @example C.values({name: 'bob', age: 44, job: 'chef'}); //=> ['bob', 44, 'chef']
  *
  * @param {Object} obj
- * @returns {Array} - List of own values from the given object.
+ * @returns {Array[*]} - List of own values from the given object.
  */
 module.exports = function _values(obj) {
     return _reduce(function(accumList, prop) {

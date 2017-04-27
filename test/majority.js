@@ -2,21 +2,30 @@ var assert = require('assert');
 var C = require('../index');
 
 describe('majority', function() {
-    var isEven = function(x) { return x % 2 === 0; };
-    var isOdd = function(x) { return x % 2 === 1; };
-    var atLeastFive = function(x) { return x >= 5; };
-    var isNumber = function(x) { return Object.prototype.toString.call(x) === '[object Number]'; };
+    var ageOver30 = function(x) { return x.age > 30; };
 
-    var nums = [ 1, 3, 5, 7, 9 ];
+    // OVER 30
+    var reallyOld = { name: 'N/A', age: Infinity };
+    var sam = { name: 'sam', age: 83 };
+    var andy = { name: 'andy', age: 37 };
 
-    it('returns true if all predicates are satisfied by at least half of the values', function() {
-        assert.strictEqual(C.majority([ isNumber, atLeastFive ], nums), true);
-        assert.strictEqual(C.majority([ isEven, isNumber ], [ 2, 4, 'foo', 7, 8 ]), true);
+    // UNDER 30
+    var ryan = { name: 'ryan', age: 22 };
+    var dog = { name: 'doggo', age: 4 };
+
+    it('returns true if the predicate function returns true for more than half of the values', function() {
+        assert.strictEqual(C.majority(ageOver30, [ sam, andy ]), true);
+        assert.strictEqual(C.majority(ageOver30, [ sam, sam, dog ]), true);
+
+        assert.strictEqual(C.majority(ageOver30, [ andy, ryan, dog ]), false);
+        assert.strictEqual(C.majority(ageOver30, [ reallyOld, ryan, dog ]), false);
     });
 
     it('is curried', function() {
-        var majorityOddAtLeastFive = C.majority([ isOdd, atLeastFive ]);
-        assert.strictEqual(majorityOddAtLeastFive(nums), true);
-        assert.strictEqual(typeof majorityOddAtLeastFive, 'function');
+        assert.strictEqual(typeof C.majority(ageOver30), 'function');
+
+        assert.strictEqual(C.majority(ageOver30)([ sam, sam, dog ]), true);
+
+        assert.strictEqual(C.majority(ageOver30)([ reallyOld, ryan, dog ]), false);
     });
 });

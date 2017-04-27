@@ -2,25 +2,25 @@ var _curry = require('./_curry');
 
 /**
  * Applies an iterator function against an accumulated value and each value
- * of the data structure (from left-to-right) while `predicate` returns true
+ * of the data structure `accumulator` (from left-to-right) while `predicate` returns true
  * to produce a final value.
  *
- * @example reduceWhile((acc, x) => acc > 10, (x, y) => x + y, 0, [ 2, 4, 6, 8, 10 ]); //=> 12
+ * @example C.reduceWhile(sum => sum > 10, (sum, y) => sum + y, 0, [ 2, 4, 6, 8 ]); //=> 12
  *
- * @param {Function} predicate - Determines whether to continue accumulating or not.
- * @param {Function} reducer - Applied to `accumulator` and each `lengthable[i]` to produce a result.
- * @param {a} accumulator - Accumulated value.
- * @param {Array|Arguments|String} lengthable - The data structure to reduce.
- * @returns {a} - Value that results from the reduction.
+ * @param {Function(a, *, Number) -> Boolean} predicate - Returns whether to continue accumulating or not.
+ * @param {Function(a, *, Number) -> *} reducer - Applied per accumulated, current, and index values.
+ * @param {a} accumulator - Initial accumulated value.
+ * @param {Array[*]|Arguments|String} lengthable - The data structure to reduce.
+ * @returns {*} - Value that results from the reduction.
  */
 module.exports = _curry(function _reduceWhile(predicate, reducer, accumulator, lengthable) {
     var index = 0;
     var len = lengthable.length;
     while (index < len) {
-        if (!predicate(accumulator, lengthable[index])) {
+        if (!predicate(accumulator, lengthable[index], index)) {
             break;
         }
-        accumulator = reducer(accumulator, lengthable[index]);
+        accumulator = reducer(accumulator, lengthable[index], index);
         index += 1;
     }
     return accumulator;

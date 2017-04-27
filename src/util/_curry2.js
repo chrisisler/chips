@@ -1,15 +1,13 @@
 /**
- * Returns a new function that, when called with not enough of the original
+ * Returns a new function that, when called with a subset of the original
  * functions arguments, returns a new function.
  *
- * @example
- *     var add2 = (a, b) => a + b;
- *     var curriedAdd2 = curry2(add2);
- *     curriedAdd2(1)(2); //=> 3
- *     curriedAdd2(1, 2); //=> 3
+ * @example _curry2((a, b) => a + b)(1)(2); //=> 3
+ * @example _curry2((a, b) => a + b)(1, 2); //=> 3
  *
- * @param {Function} fn - Function to curry.
- * @returns {Function}
+ * @private
+ * @param {Function(*, *) -> *} fn - Binary function to curry.
+ * @returns {Function(*)(*) -> *}
  */
 module.exports = function _curry2(fn) {
     return function arity2(a1, a2) {
