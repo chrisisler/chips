@@ -43,7 +43,7 @@ getAPIExamples() {
 generateAPIDocs() {
     local APIFile="${1}"
 
-    printf "## API\n\n" >> "${APIFile}"
+    printf "# API\n\n" >> "${APIFile}"
 
     for file in $(find ./src -maxdepth 1 -name "_*.js"); do
 

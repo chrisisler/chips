@@ -8,6 +8,9 @@ Chips delivers powerful abstractions making it effortless to write declarative l
 * Each function is [curried](https://www.sitepoint.com/currying-in-functional-javascript/) to provide a flexible API.
 * Data is never mutated, a copy is always returned.
 
+## API / Documentation
+There are examples for every function [available here](https://github.com/chrisisler/chips/blob/master/API.md).
+
 ## Install
 ```bash
 git clone git@github.com:chrisisler/chips && npm i
@@ -15,7 +18,7 @@ git clone git@github.com:chrisisler/chips && npm i
 npm i chips
 ```
 
-## Process
+## Development Process
 1. Make a branch for the new function(s)
 2. Write the unit test(s) first. These go in `test/newFunc.js`
 3. Add the necessary `require` statement(s) in `./index.js` in *alphabetical* order
@@ -23,13 +26,10 @@ npm i chips
 5. Run the "check" script which will verify the comments, run the linter and tests, and then generate API docs if none of the previous steps fail.
 
 ## Roadmap
-- [ ] *WIP* Idea: Write a script to generate API docs from comments in each individual file?
 - [ ] Add assertion to `zipObjBy` that ensures value _and_ key is passed to `fn`.
 - [ ] Add tests for functions that verify that `fn` recieves `index` as an argument (see above).
 - [ ] Add tests for all functions in `src/util/` directory then remove `test/README.md`
-
-## API / Documentation
-There are examples for every function [available here](https://github.com/chrisisler/chips/blob/master/API.md).
+- [ ] Update version to 0.0.3 and update npm package.
 
 ### Thank you Ramda
 Reading Ramda source has taught me many tricks, so thanks to every contributor there.
