@@ -3,9 +3,9 @@ var _curry2 = require('./_curry2');
 /**
  * Returns true if the given data is of the given type.
  *
- * @example is('Function', () => {}); //=> true
- * @example is('String', 3); //=> true
- * @example is('number', 72); //=> false because `type` must be capital.
+ * @example _is('Function', () => {}); //=> true
+ * @example _is('String', 3); //=> true
+ * @example _is('number', 72); //=> false because `type` must be capital.
  *
  * @param {String} type - Like 'String', 'Array', etc. Must be capitalized.
  * @param {*} x - Any value.

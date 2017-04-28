@@ -7,9 +7,9 @@ var _curry = require('./_curry');
  *
  * @example C.reduceWhile(sum => sum > 10, (sum, y) => sum + y, 0, [ 2, 4, 6, 8 ]); //=> 12
  *
- * @param {Function(a, *, Number) -> Boolean} predicate - Returns whether to continue accumulating or not.
- * @param {Function(a, *, Number) -> *} reducer - Applied per accumulated, current, and index values.
- * @param {a} accumulator - Initial accumulated value.
+ * @param {Function(*, *, Number) -> Boolean} predicate - Returns whether to continue accumulating or not.
+ * @param {Function(*, *, Number) -> *} reducer - Applied per accumulated, current, and index values.
+ * @param {*} accumulator - Initial accumulated value.
  * @param {Array[*]|Arguments|String} lengthable - The data structure to reduce.
  * @returns {*} - Value that results from the reduction.
  */

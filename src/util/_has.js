@@ -3,8 +3,8 @@ var _curry2 = require('./_curry2');
 /**
  * Returns true if `obj` contains `prop` as its own property.
  *
- * @example has('id', { name: 'sam' }); //=> false
- * @example has('age', { name: 'sonic', age: Infinity }); //=> true
+ * @example _has('id', { name: 'sam' }); //=> false
+ * @example _has('age', { name: 'sonic', age: Infinity }); //=> true
  *
  * @param {String} prop - A key of the given obj.
  * @param {Object} obj - An object.

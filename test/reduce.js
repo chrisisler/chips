@@ -22,6 +22,19 @@ describe('reduce', function() {
         assert.strictEqual(C.reduce(C.concat, '', ''), '');
     });
 
+    it('applies the index to the `reducer` function as a third argument', function() {
+        var assertNumber = function(accum, val, index) {
+            assert.strictEqual(typeof index, 'number');
+        };
+
+        C.reduce(assertNumber, void 0, 'abc');
+        C.reduce(assertNumber, void 0, [ 'a', 'b', 'c' ]);
+
+        (function() {
+            C.reduce(assertNumber, void 0, arguments);
+        })('a', 'b', 'c');
+    });
+
     it('is curried', function() {
         var together = C.reduce(add);
 

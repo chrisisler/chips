@@ -2,6 +2,7 @@ var _curry3 = require('./util/_curry3');
 var _concat = require('./_concat');
 var _accum = require('./_accum');
 
+// Non-recursive flatten. Flattens a list by one-dimension.
 var flattenOnce = _accum(_concat);
 
 /**

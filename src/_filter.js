@@ -10,8 +10,8 @@ var _concat = require('./_concat');
  * @example C.filter(x => x === x.toUpperCase(), 'FooBar'); //=> 'FB'
  *
  * @param {Function(*, Number) -> Boolean} predicate - Returns true/false to retain/reject each value.
- * @param {Array[*]|Object|String} filterable
- * @returns {Array[*]|Object|String}
+ * @param {Array[*]|Object|String} filterable - A list of values, Object, or String.
+ * @returns {Array[*]|Object|String} - Only the most awesome elements from `filterable`.
  */
 module.exports = _curry2(function _filter(predicate, filterable) {
     switch (Object.prototype.toString.call(filterable)) {
@@ -20,8 +20,8 @@ module.exports = _curry2(function _filter(predicate, filterable) {
                 return predicate(element, index) ? _concat(accumList, [ element ]) : accumList;
             }, [], filterable);
         case '[object Object]':
-            return _reduce(function(accumObj, prop, index) {
-                if (predicate(filterable[prop], index)) {
+            return _reduce(function(accumObj, prop) {
+                if (predicate(filterable[prop], prop)) {
                     accumObj[prop] = filterable[prop];
                 }
                 return accumObj;

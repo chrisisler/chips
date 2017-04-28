@@ -20,13 +20,19 @@ describe('zipObjBy', function() {
         assert.deepEqual(C.zipObjBy(dbl, keys, []), {});
     });
 
-    it('provides an identity function of a falsy function is supplied', function() {
+    it('provides an identity function (and flattens one-dimension) if a falsy function is supplied', function() {
         var obj = { a: 1, b: 2, c: 3 };
 
         assert.deepEqual(C.zipObjBy(null, keys, vals), obj);
         assert.deepEqual(C.zipObjBy(undefined, keys, vals), obj);
         assert.deepEqual(C.zipObjBy(void 0, keys, vals), obj);
         assert.deepEqual(C.zipObjBy(false, keys, vals), obj);
+    });
+
+    it('applies `fn` to value as first parameter and key as second parameter', function() {
+        C.zipObjBy(function(val, key) {
+            assert.strictEqual(typeof key, 'string');
+        }, keys, vals);
     });
 
     it('truncates to the length of the list of `keys`', function() {

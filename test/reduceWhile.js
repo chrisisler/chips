@@ -19,6 +19,23 @@ describe('reduceWhile', function() {
         assert.strictEqual(C.reduceWhile(lessThan3, C.concat, '', ''), '');
     });
 
+    it('applies the index to the `reducer` and `predicate` function as a third argument', function() {
+        var assertNumberAndReturnTrue = function(accum, val, index) {
+            assert.strictEqual(typeof index, 'number');
+            return true;
+        };
+        var assertNumber = function(accum, val, index) {
+            assert.strictEqual(typeof index, 'number');
+        };
+
+        C.reduceWhile(assertNumberAndReturnTrue, assertNumber, void 0, 'abc');
+        C.reduceWhile(assertNumberAndReturnTrue, assertNumber, void 0, [ 'a', 'b', 'c' ]);
+
+        (function() {
+            C.reduceWhile(assertNumberAndReturnTrue, assertNumber, void 0, arguments);
+        })('a', 'b', 'c');
+    });
+
     it('is curried', function() {
         assert.strictEqual(typeof C.reduceWhile, 'function');
         assert.strictEqual(typeof C.reduceWhile(lessThan3), 'function');

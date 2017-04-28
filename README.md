@@ -26,10 +26,7 @@ npm i chips
 5. Run the "check" script which will verify the comments, run the linter and tests, and then generate API docs if none of the previous steps fail.
 
 ## Roadmap
-- [ ] Add assertion to `zipObjBy` that ensures value _and_ key is passed to `fn`.
-- [ ] Add tests for functions that verify that `fn` recieves `index` as an argument (see above).
-- [ ] Add tests for all functions in `src/util/` directory then remove `test/README.md`
-- [ ] Update version to 0.0.3 and update npm package.
+- [ ] Update version to 0.1 and update npm package on npm.
 
 ### Thank you Ramda
 Reading Ramda source has taught me many tricks, so thanks to every contributor there.

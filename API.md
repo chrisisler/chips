@@ -80,8 +80,9 @@ C.majorityPass([ isEven, isOdd, isObject ], 42); //=> false
 #### C.map(fn, mappable)
 Returns the result of applying a function to map some data structure.
 ```javascript
-C.map(x => x + 1, { a: 1 }); //=> { a: 2 }
+C.map((v, k) => v + k, { a: 1 }); //=> { a: 'a1' }
 C.map(x => x * 2, [ 1, 2 ]); //=> [ 2, 4 ]
+C.map((x, index) => index, ['baz']); //=> [ 0 ]
 C.map(x => x.toUpperCase(), 'foo'); //=> 'FOO'
 C.map(x => x * 2, y => y + 1)(3); //=> 7
 C.map(x => x * 2, 100); //=> 200

@@ -9,6 +9,17 @@ describe('mergeAllBy', function() {
 
     it('returns the result of merging a list of objects, where a function resolves non-same value conflicts', function() {
         assert.deepEqual(C.mergeAllBy(sum, objs), expected);
+
+        assert.deepEqual(
+            C.mergeAllBy(sum, [ { x: 1, z:5 }, { y: 2, z: 6 } ]),
+            { x: 1, y: 2, z: 11 }
+        );
+    });
+
+    it('applies the key to the `resolver` function', function() {
+        C.mergeAllBy(function(list, key) {
+            assert.strictEqual(typeof key, 'string');
+        }, objs);
     });
 
     it('is curried', function() {

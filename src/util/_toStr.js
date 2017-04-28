@@ -1,9 +1,9 @@
 /**
  * Returns the string representation of any object.
  *
- * @example toStr('foo'); //=> '[object String]'
- * @example toStr([ 1 ]); //=> '[object Array]'
- * @example toStr(1); //=> '[object Number]'
+ * @example _toStr('foo'); //=> '[object String]'
+ * @example _toStr([ 1 ]); //=> '[object Array]'
+ * @example _toStr(1); //=> '[object Number]'
  *
  * @param {*} x - Any value.
  * @returns {String} - String containing the type of the given param.

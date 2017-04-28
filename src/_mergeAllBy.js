@@ -16,7 +16,7 @@ var _pipe = require('./_pipe');
 // @param {Function(*) -> *} - A function to apply to each value in the array.
 // @param {Array[*]} - A list of values to map and then filter.
 // @returns {Array[*]} - The mapped result of the given list with all undefined values removed.
-var trueMap = _pipe(_map, _filter(function(x) { return x != undefined; }));
+var trueMap = _pipe(_map, _filter(Boolean));
 
 /**
  * The same as Object.assign except when a objects with the same key and with
@@ -25,7 +25,7 @@ var trueMap = _pipe(_map, _filter(function(x) { return x != undefined; }));
  *
  * @example C.mergeAllBy(C.accum((a, b) => a + b), [{x: 1, z:5}, {y: 2, z: 6}]); //=> {x: 1, y: 2, z: 11}
  *
- * @param {Function([*], String) -> *} resolver - If > 1 objs have uniq values per key, this is applied to those values and the key.
+ * @param {Function([*], String) -> *} resolver - If > 1 objs have uniq values for any key, this is applied to those values and the key.
  * @param {Array[Object]} objs - A list of objects.
  * @returns {Object} - The result of merging all key-value pairs of each object.
  */

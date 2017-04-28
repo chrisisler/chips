@@ -9,8 +9,8 @@ var _is = require('./_is');
  * object to a target object. Returns a clone of the target obj with
  * later sources' props overwriting earlier props.
  *
- * @example assign({}, { id: 3872 }, { foo: 'bar' }); //=> { id: 3872, foo: 'bar' }
- * @example assign({ name: 'knuckles' }, { name: 'tails' }); //=> { name: tails }
+ * @example _assign({}, { id: 3872 }, { foo: 'bar' }); //=> { id: 3872, foo: 'bar' }
+ * @example _assign({ name: 'knuckles' }, { name: 'tails' }); //=> { name: 'tails' }
  *
  * @param {Object} target - Obj to assign new values to (and clone).
  * @returns {Object}
