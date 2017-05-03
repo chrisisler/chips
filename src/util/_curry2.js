@@ -2,6 +2,8 @@
  * Returns a new function that, when called with a subset of the original
  * functions arguments, returns a new function.
  *
+ * Return value of arity2 depends on the number of parameters given to arity2.
+ *
  * @example _curry2((a, b) => a + b)(1)(2); //=> 3
  * @example _curry2((a, b) => a + b)(1, 2); //=> 3
  *
@@ -12,9 +14,14 @@
 module.exports = function _curry2(fn) {
     return function arity2(a1, a2) {
         switch (arguments.length) {
-            case 0: return arity2;
-            case 1: return function(_a2) { return fn(a1, _a2); };
-            default: return fn.apply(this, arguments);
+            case 0:
+                return arity2;
+            case 1:
+                return function(_a2) {
+                    return fn(a1, _a2);
+                };
+            default:
+                return fn.apply(this, arguments);
         }
     };
 };

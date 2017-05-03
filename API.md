@@ -77,8 +77,10 @@ C.majorityPass([ isEven, isOdd, isNumber ], 42); //=> true
 C.majorityPass([ isEven, isOdd, isObject ], 42); //=> false
 ```
 
-#### C.map(fn, mappable)
-Returns the result of applying a function to map some data structure.
+#### C.map(fn, item)
+Returns the result of applying `fn` over all values in `item`.
+Returns a new function that, when called, applies its arguments to `fn` and
+`item`, in order.
 ```javascript
 C.map((v, k) => v + k, { a: 1 }); //=> { a: 'a1' }
 C.map(x => x * 2, [ 1, 2 ]); //=> [ 2, 4 ]
@@ -104,7 +106,11 @@ C.nPass(3, (val, index) => val % 2 === 1, [ 1, 2, 3, 4, 5 ]); //=> true
 ```
 
 #### C.pipe()
-A variadic function that composes the supplied functions in the order given.
+Pipe takes the output of the first function, and feeds that result as the input to the next function.
+A variadic (N-ary) function that composes the supplied functions in the order given.
+C.pipe receives N functions as arguments: f1, f2, f3, ..., fN (where N is any number).
+f1(A -> B), f2(B -> C), f3(C -> D), ..., fN(Y -> Z)
+Then C.pipe(f1, f2, f3, ..., fN) pipes each function, receiving A and outputting Z.
 ```javascript
 var adultsOver30 = C.pipe(C.filter(a => a.age > 30), C.map(a => a.name));
 adultsOver30([{name: 'karen', age: 32}, {name: 'mike', age: 26}]); //=> 'karen'
@@ -113,8 +119,7 @@ adultsOver30([{name: 'karen', age: 32}, {name: 'mike', age: 26}]); //=> 'karen'
 #### C.prop(key, obj)
 Returns `obj[key]`.
 ```javascript
-C.prop('age', { name: 'karen', age: 32 }); //=> 32
-C.map(C.prop('id'), [{foo: 'bar', id: 327}, {id: 279}]); //=> [327, 279]
+C.prop('name', { name: 'karen', age: 32 }); //=> 'karen'
 ```
 
 #### C.reduce(reducer, accumulator, lengthable)

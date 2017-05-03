@@ -3,8 +3,7 @@ var _curry2 = require('./util/_curry2');
 /**
  * Returns `obj[key]`.
  *
- * @example C.prop('age', { name: 'karen', age: 32 }); //=> 32
- * @example C.map(C.prop('id'), [{foo: 'bar', id: 327}, {id: 279}]); //=> [327, 279]
+ * @example C.prop('name', { name: 'karen', age: 32 }); //=> 'karen'
  *
  * @param {String} key - A prop of `obj`.
  * @param {Object} obj

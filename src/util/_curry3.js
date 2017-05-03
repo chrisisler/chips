@@ -16,10 +16,18 @@ var _curry2 = require('./_curry2');
 module.exports = function _curry3(fn) {
     return function arity3(a1, a2, a3) {
         switch (arguments.length) {
-            case 0: return arity3;
-            case 1: return _curry2(function(_a2, _a3) { return fn(a1, _a2, _a3); });
-            case 2: return function(_a3) { return fn(a1, a2, _a3); };
-            default: return fn.apply(this, arguments);
+            case 0:
+                return arity3;
+            case 1:
+                return _curry2(function(_a2, _a3) {
+                    return fn(a1, _a2, _a3);
+                });
+            case 2:
+                return function(_a3) {
+                    return fn(a1, a2, _a3);
+                };
+            default:
+                return fn.apply(this, arguments);
         }
     };
 };

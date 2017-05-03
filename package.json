@@ -1,6 +1,6 @@
 {
     "name": "chips",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "description": "Composable, curried functions written for self-improvement.",
     "main": "index.js",
     "files": [
@@ -9,7 +9,7 @@
     ],
     "scripts": {
         "test": "mocha",
-        "lint": "eslint src/_*.js src/util/_*.js index.js",
+        "lint": "eslint test/*.js src/_*.js src/util/_*.js index.js",
         "build": "./scripts/build"
     },
     "repository": {
