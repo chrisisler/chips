@@ -1,12 +1,12 @@
 # Chips
-Chips is a functional JS library promoting succinct and immutable code.
+Chips is a JS library facilitating declarative code by providing composable, higher-order functions.
 
 [![Build Status](https://travis-ci.org/chrisisler/chips.svg?branch=master)](https://travis-ci.org/chrisisler/chips)
 
-Chips delivers powerful functionality to support declarative logic.
-* Compose methods to build custom functions.
-* Each function is [curried](https://www.sitepoint.com/currying-in-functional-javascript/).
-* Data is never mutated.
+* Combine functions with `C.pipe` and `C.map` to build custom functions.
+* Curry your own functions with `C.curry`
+* Each Chips function is [curried](https://www.sitepoint.com/currying-in-functional-javascript/).
+* Work with immutable data - each Chips function operates on a _copy_ of the supplied data.
 
 ## API Documentation
 There are examples for every function [available here](https://github.com/chrisisler/chips/blob/master/API.md).
@@ -21,6 +21,9 @@ Then in a JS file:
 ```javascript
 const C = require('chips');
 ```
+
+## Roadmap
+- Wrap all lines to 80
 
 ### Thank you Ramda
 Reading Ramda source has taught me many tricks, so thanks to every contributor there.

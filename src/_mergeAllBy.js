@@ -17,6 +17,7 @@ var _pipe = require('./_pipe');
 // @param {Array[*]} - A list of values to map and then filter.
 // @returns {Array[*]} - The mapped result of the given list with all undefined values removed.
 var trueMap = _pipe(_map, _filter(Boolean));
+Object.prototype.toString.call('');
 
 /**
  * The same as Object.assign except when a objects with the same key and with

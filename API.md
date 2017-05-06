@@ -35,6 +35,14 @@ C.curry((a, b, c) => a + b + c)(1)(2)(3); //=> 6
 C.curry((a, b) => a + b)(1)(2); //=> 3
 ```
 
+#### C.disJoin(disJoinerFns, vals)
+Returns a list of lists where the sub-list at index `i` contains all values
+from the given list `vals` which satisfy the equally-indexed predicate
+function at that same index `i`.
+```javascript
+C.disJoin([getEvens, getOdds], [1, 2, 3, 4]); //=> [[2, 4], [1, 3]]
+```
+
 #### C.filter(predicate, filterable)
 Returns a new `filterable` containing values which satisfy the predicate.
 ```javascript

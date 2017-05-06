@@ -4,6 +4,7 @@ module.exports = {
     alterProp: require('./src/_alterProp'),
     concat: require('./src/_concat'),
     curry: require('./src/_curry'),
+    disJoin: require('./src/_disJoin'),
     filter: require('./src/_filter'),
     flatMap: require('./src/_flatMap'),
     flatten: require('./src/_flatten'),

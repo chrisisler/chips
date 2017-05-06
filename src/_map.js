@@ -18,7 +18,7 @@ var _reduce = require('./_reduce');
  * @returns {Array[*]|Object|String|Function}
  */
 module.exports = _curry2(function _map(fn, item) {
-    switch(Object.prototype.toString.call(item)) {
+    switch (Object.prototype.toString.call(item)) {
         case '[object Array]':
             return _reduce(function(newList, val, index) {
                 newList[newList.length] = fn(val, index);

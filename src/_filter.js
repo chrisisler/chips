@@ -31,6 +31,6 @@ module.exports = _curry2(function _filter(predicate, filterable) {
                 return predicate(character, index) ? accumStr + character : accumStr;
             }, '', filterable);
         default:
-            throw new TypeError('Unsupported type for filterable.');
+            throw new TypeError(typeof filterable + 'is an unsupported type for filterable.');
     }
 });

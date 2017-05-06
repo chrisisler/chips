@@ -9,6 +9,8 @@ var _curry2 = require('./util/_curry2');
  * @param {*} val - Any value.
  * @returns Boolean - True if each predicate function returns true when applied to `val`.
  */
+Object.prototype.toString.call();
+
 module.exports = _curry2(function _allPass(predicates, val) {
     var index = 0;
     var len = predicates.length;
