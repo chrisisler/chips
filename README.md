@@ -13,9 +13,9 @@ There are examples for every function [available here in API.md](https://github.
 
 ## Install
 ```bash
-git clone git@github.com:chrisisler/chips && cd chips && yarn
+git clone git@github.com:chrisisler/chips && cd chips && npm i
 # or
-yarn add chips
+npm i -S chips
 ```
 Then in a JS file:
 ```javascript

@@ -1,7 +1,7 @@
 var assert = require('assert');
 var C = require('../index');
 
-describe.only('disJoin', function() {
+describe('disJoin', function() {
     var getEvens = function(x) { return x % 2 === 0; };
     var getOdds = function(x) { return x % 2 === 1; };
     var getFives = function(x) { return x === 5; };
