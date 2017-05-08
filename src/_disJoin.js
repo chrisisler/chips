@@ -1,6 +1,5 @@
 var _curry2 = require('./util/_curry2');
 var _filter = require('./_filter');
-var _map = require('./_map');
 
 /**
  * Returns a list of lists where the sub-list at index `i` contains all values
@@ -14,15 +13,12 @@ var _map = require('./_map');
  * @returns {Array[Array[*]]} - A list of lists of values of any type.
  */
 module.exports = _curry2(function _disJoin(disJoinerFns, vals) {
-    return _map(function(disJoinerFn) {
-        return _filter(disJoinerFn, vals);
-    }, vals);
-    // var len = disJoinerFns.length;
-    // var index = 0;
-    // var result = [];
-    // while (index < len) {
-    //     result[result.length] = _filter(disJoinerFns[index], vals);
-    //     index += 1;
-    // }
-    // return result;
+    var len = disJoinerFns.length;
+    var index = 0;
+    var result = [];
+    while (index < len) {
+        result[result.length] = _filter(disJoinerFns[index], vals);
+        index += 1;
+    }
+    return result;
 });
