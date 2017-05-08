@@ -23,7 +23,7 @@ const C = require('chips');
 ```
 
 ## Roadmap
-- Wrap all lines to 80
+- Nothing at the moment.
 
 ### Thank you Ramda
 Reading Ramda source has taught me many tricks, so thanks to every contributor there.

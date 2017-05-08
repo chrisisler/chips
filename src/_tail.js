@@ -1,5 +1,5 @@
 /**
- * Returns the given data containing every element or character except the zeroth.
+ * Returns the given data containing every element except the zeroth.
  *
  * @example C.tail([ 1, 2, 3 ]); //=> [ 2, 3 ]
  *

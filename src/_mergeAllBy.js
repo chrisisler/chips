@@ -10,31 +10,35 @@ var _pipe = require('./_pipe');
 //
 // Private helper function for mapping over a list and removing falsy values.
 //
-// @example trueMap(x => x.val, [ { val: false }, { val: null }, { val: 3 } ]); // => [ false, 3 ]
+// @example trueMap(x => x.y, [ {y: false}, {y: null}, {y: 3} ]); //=> [ 3 ]
 //
 // @private
 // @param {Function(*) -> *} - A function to apply to each value in the array.
 // @param {Array[*]} - A list of values to map and then filter.
-// @returns {Array[*]} - The mapped result of the given list with all undefined values removed.
+// @returns {Array[*]} - The same as `list.map(fn).filter(Boolean);`
 var trueMap = _pipe(_map, _filter(Boolean));
-Object.prototype.toString.call('');
 
 /**
  * The same as Object.assign except when a objects with the same key and with
  * non-same values for that key appear, a list of those values is applied to
- * the supplied `resolver` to produce a value for that key. Order not guaranteed.
+ * the supplied `resolver` to produce a value for that key.
  *
- * @example C.mergeAllBy(C.accum((a, b) => a + b), [{x: 1, z:5}, {y: 2, z: 6}]); //=> {x: 1, y: 2, z: 11}
+ * @example C.mergeAllBy(C.accum((a,b) => a + b), [{x: 1, z:5}, {y: 2, z: 6}]);
+ * @example //=> {x: 1, y: 2, z: 11}
  *
- * @param {Function([*], String) -> *} resolver - If > 1 objs have uniq values for any key, this is applied to those values and the key.
+ * @param {Function([*], String) -> *} resolver - If > 1 objs have uniq values
+ *                   for any key, this is applied to those values and the key.
  * @param {Array[Object]} objs - A list of objects.
- * @returns {Object} - The result of merging all key-value pairs of each object.
+ * @returns {Object} - The result of merging all key-val pairs of each object.
  */
 module.exports = _curry2(function _mergeAllBy(resolver, objs) {
     var out = {};
     _map(_map(function(val, key) {
+        // Equivalent to: `objs.map(o => o[key]).filter(Boolean).uniq();`
         var uniqConflictedVals = _uniq(trueMap(_prop(key), objs));
-        out[key] = uniqConflictedVals.length === 1 ? val : resolver(uniqConflictedVals, key);
+        out[key] = (uniqConflictedVals.length === 1)
+            ? val
+            : resolver(uniqConflictedVals, key);
     }), objs);
     return out;
 });

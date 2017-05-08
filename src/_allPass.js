@@ -5,11 +5,10 @@ var _curry2 = require('./util/_curry2');
  *
  * @example C.allPass([ x => x % 2 === 1, x => x === 3 ], 3); //=> true
  *
- * @param {Array[Function(*) -> Boolean]} predicates - Each fn is applied to `val`.
+ * @param {Array[Function(*) -> Boolean]} predicates - Each fn applied to `val`
  * @param {*} val - Any value.
- * @returns Boolean - True if each predicate function returns true when applied to `val`.
+ * @returns Boolean - True if all predicates returned true.
  */
-Object.prototype.toString.call();
 
 module.exports = _curry2(function _allPass(predicates, val) {
     var index = 0;

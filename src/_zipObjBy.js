@@ -7,13 +7,13 @@ var _reduce = require('./_reduce');
  *
  * Note: The length of returned list is equal to the length of the `keys` list.
  *
- * @example C.zipObjBy(x => x / 2, [ 'k1', 'k2' ], [ 4, 6 ]); //=> { k1: 2, k2: 3 }
- * @example C.zipObjBy((val, key) => `${key} is ${val}`, ['id'], [682]); //=> { id: 'id is 682' }
+ * @example C.zipObjBy(x => x / 2, ['k1', 'k2'], [4, 6]); //=> { k1: 2, k2: 3 }
+ * @example C.zipObjBy((v, k) => v + k, ['id'], [682]); //=> { id: 'id682' }
  *
- * @param {Function(*, String) -> *} fn - Given each equal-index value and key, returns a new value.
+ * @param {Function(*, String) -> *} fn - Applied per equal-index key and val.
  * @param {Array[String]} keys - A list of strings, the keys of the new object.
  * @param {Array[*]} vals - Each value in this list is mapped via `fn`.
- * @returns {Object} - The result of zipping `keys` with `fn` applied to `vals`.
+ * @returns {Object} - An obj with keys=`keys` and vals=`fn(vals[i], keys[i])`.
  */
 module.exports = _curry3(function _zipObjBy(fn, keys, vals) {
     if (keys.length <= 0 || vals.length <= 0) {
