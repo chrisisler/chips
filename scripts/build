@@ -39,7 +39,7 @@ installDependencies() {
 }
 
 # TODO: Ensure every .js file in src/ and src/util/ has a test file in test/
-# verifyTestsExist() {}
+# verifyTestsExist() { }
 
 # Ensure that each .js file in src/ (and src/util/) has an @example, @param, and a @returns.
 verifyComments() {
@@ -57,7 +57,7 @@ verifyComments() {
     if [[ "${exitCode}" != 0 ]]; then
         exit "${exitCode}"
     else
-        success "Comments verified."
+        success "Comments contain @example, @param, and @returns."
     fi
 }
 
@@ -66,7 +66,17 @@ runLinter() {
     # `exit 1`) if there are lint errors. It will also display the errors,
     # so it does all the heavy lifting by itself (thanks npm and eslint).
     npm run -s lint
-    success "Linter satisfied."
+    success "No lint errors."
+}
+
+ensureAllTestsAreRan() {
+    for jsTest in $(find ./test -name "*.js"); do
+        if grep -q ".only(" "${jsTest}"; then
+            failure "ERR: ${jsTest:2} test contains an 'only' statement."
+            exit 1
+        fi
+    done
+    success "No 'only' found in tests."
 }
 
 runTests() {
@@ -82,7 +92,7 @@ runTests() {
 
     npm -s test &>/dev/null
 
-    success "Tests passed."
+    success "Unit tests passed."
 }
 
 generateAPIDocsWrapper() {
@@ -101,5 +111,6 @@ printf "\n"
 installDependencies
 verifyComments
 runLinter
+ensureAllTestsAreRan
 runTests
 generateAPIDocsWrapper

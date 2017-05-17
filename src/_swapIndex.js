@@ -6,13 +6,13 @@ var _slice = require('./util/_slice');
  *
  * @example C.swapIndex(0, 2, [ 'a', 'b', 'c' ]); //=> [ 'c', 'b', 'a' ]
  *
- * @param {Number} index1 - An index in the given `vals`.
- * @param {Number} index2 - An index in the given `vals`.
- * @param {Array[*]} vals - A list of vals.
+ * @param {Number} index1 - An index in the given `values`.
+ * @param {Number} index2 - An index in the given `values`.
+ * @param {Array[*]} values - A list of values of any type.
  * @returns {Array[*]}
  */
-module.exports = _curry3(function _swapIndex(index1, index2, vals) {
-    var listCopy = _slice(vals);
+module.exports = _curry3(function _swapIndex(index1, index2, values) {
+    var listCopy = _slice(values);
     var elem1 = listCopy[index1];
     var elem2 = listCopy[index2];
 

@@ -5,6 +5,8 @@ var _reduce = require('./_reduce');
  * Returns the result of applying `fn` over all values in `item`.
  * Returns a new function that, when called, applies its arguments to `fn` and
  * `item`, in order.
+ * If `item` is a function, a new function is returned which composes both
+ * functions.
  *
  * @example C.map((v, k) => v + k, { a: 1 }); //=> { a: 'a1' }
  * @example C.map(x => x * 2, [ 1, 2 ]); //=> [ 2, 4 ]

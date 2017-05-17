@@ -5,6 +5,7 @@ var _slice = require('./util/_slice');
 /**
  * Returns a new function that, when called with a subset of the original
  * functions arguments, returns a new function.
+ * See `C.pipe` for an example of how currying works.
  *
  * @example C.curry((a, b, c, d) => a + b + c + d)(1)(2)(3)(5); //=> 17
  * @example C.curry((a, b, c) => a + b + c)(1)(2)(3); //=> 6

@@ -29,7 +29,7 @@ getAPIHeader() {
 
 getAPIDescription() {
     local file="${1}"
-    local APIDescription="$(cat "${file}" | grep -E "^ \* [^@]" | sed 's/^ \* //g')"
+    local APIDescription="$(cat "${file}" | grep -E "^ \* [^@ ]" | sed 's/^ \* //g')"
     printf "%s" "${APIDescription}"
 }
 

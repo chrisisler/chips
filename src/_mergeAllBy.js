@@ -19,11 +19,12 @@ var _pipe = require('./_pipe');
 var trueMap = _pipe(_map, _filter(Boolean));
 
 /**
- * The same as Object.assign except when a objects with the same key and with
- * non-same values for that key appear, a list of those values is applied to
- * the supplied `resolver` to produce a value for that key.
+ * The same as Object.assign except when multiple objects with the same key and
+ * non-same values for that key are encountered, a list of those values is
+ * applied to the supplied `resolver` function to produce a single value.
  *
- * @example C.mergeAllBy(C.accum((a,b) => a + b), [{x: 1, z:5}, {y: 2, z: 6}]);
+ * @example var getTotal = C.accum((a,b) => a + b);
+ * @example C.mergeAllBy(getTotal, [ { x: 1, z: 5 }, { y: 2, z: 6 } ]);
  * @example //=> {x: 1, y: 2, z: 11}
  *
  * @param {Function([*], String) -> *} resolver - If > 1 objs have uniq values
@@ -34,7 +35,7 @@ var trueMap = _pipe(_map, _filter(Boolean));
 module.exports = _curry2(function _mergeAllBy(resolver, objs) {
     var out = {};
     _map(_map(function(val, key) {
-        // Equivalent to: `objs.map(o => o[key]).filter(Boolean).uniq();`
+        // Same as: `objs.map(o => o[key]).filter(Boolean).removeDuplicates();`
         var uniqConflictedVals = _uniq(trueMap(_prop(key), objs));
         out[key] = (uniqConflictedVals.length === 1)
             ? val

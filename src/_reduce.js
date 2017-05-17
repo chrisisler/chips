@@ -1,8 +1,9 @@
 var _curry3 = require('./util/_curry3');
 
 /**
- * Applies an iterator function, `reducer`, against an accumulator and each val
- * in the data structure `accumulator` (from left-to-right) to produce one val.
+ * Consecutively applies a `reducer` function against an `accumulator` value
+ * (an initial value to build upn) and each value in the data structure,
+ * `lengthable` (anything with a `.length` property), to produce a result.
  *
  * @example C.reduce((acc, x) => acc + x, 0, [ 1, 2, 3 ]); //=> 6
  * @example C.reduce((acc, x) => acc - x, 0, C.values({ a: 1, b: 2 })); //=> -3

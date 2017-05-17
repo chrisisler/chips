@@ -3,8 +3,8 @@ var _tail = require('./_tail');
 var _reduce = require('./_reduce');
 
 /**
- * This function is a shortcut for `reduce` where an initial accumulator is
- * taken from `lengthable[0]`.
+ * A shortcut for `reduce` where the initial accumulator value is taken from
+ * `lengthable[0]`.
  *
  * @example C.accum((acc, x) => acc + x, [ 1, 2, 3 ]); //=> 6
  *

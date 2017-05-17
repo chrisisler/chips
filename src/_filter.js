@@ -3,38 +3,45 @@ var _reduce = require('./_reduce');
 var _concat = require('./_concat');
 
 /**
- * Returns a new `filterable` containing values which satisfy the predicate.
+ * Returns a copy of the given value, `item`, which now contains only the
+ * sub-values which returned true when passed to `predicate`.
+ * Applies the given function to each element of an Array, each value of an
+ * Object, and each character of a String.
  *
  * @example C.filter(x => x === 1, { a: 1, b: 2 }); //=> { a: 1 }
  * @example C.filter(x => x >= 3, [ 1, 2, 3 ]); //=> [ 3 ]
  * @example C.filter(x => x === x.toUpperCase(), 'FooBar'); //=> 'FB'
  *
  * @param {Function(*, Number|String) -> Boolean} predicate - Returns true or
- *                                           false to retain/reject each value.
- * @param {Array[*]|Object|String} filterable - Some data to filter through.
- * @returns {Array[*]|Object|String} - The selected elements from `filterable`.
+ *                             false to retain/reject each value, respectively.
+ * @param {Array[*]|Object|String} item - Some data to filter through.
+ * @returns {Array[*]|Object|String} - The selected elements from `item`.
  */
-module.exports = _curry2(function _filter(predicate, filterable) {
-    switch (Object.prototype.toString.call(filterable)) {
+module.exports = _curry2(function _filter(predicate, item) {
+    switch (Object.prototype.toString.call(item)) {
+
         case '[object Array]':
             return _reduce(function(accumList, element, index) {
                 return predicate(element, index)
                     ? _concat(accumList, [ element ])
                     : accumList;
-            }, [], filterable);
+            }, [], item);
+
         case '[object Object]':
             return _reduce(function(accumObj, prop) {
-                if (predicate(filterable[prop], prop)) {
-                    accumObj[prop] = filterable[prop];
+                if (predicate(item[prop], prop)) {
+                    accumObj[prop] = item[prop];
                 }
                 return accumObj;
-            }, {}, Object.keys(filterable));
+            }, {}, Object.keys(item));
+
         case '[object String]':
             return _reduce(function(accumStr, _char, index) {
                 return predicate(_char, index) ? accumStr + _char : accumStr;
-            }, '', filterable);
+            }, '', item);
+
         default:
-            throw new TypeError(typeof filterable +
-                'is an unsupported type for filterable.');
+            throw new TypeError(typeof item +
+                'is an unsupported type for item.');
     }
 });

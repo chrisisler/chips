@@ -3,17 +3,17 @@ var _concat = require('./_concat');
 var _reduce = require('./_reduce');
 
 /**
- * Returns a copy of `vals` flattened to one-dimension (plucked out sub-lists).
+ * Returns a copy of `values` flattened to one-dimension (plucked out sub-lists).
  *
  * @example C.flatten([ 1, [ 2, [ 3 ] ] ]); //=> [ 1, 2, 3 ]
  *
- * @param {Array[*]} vals - A list of values.
- * @returns {Array[*]}
+ * @param {Array[*]} values - A list of values of any type, may contain lists.
+ * @returns {Array[*]} - A list of values of any type except lists.
  */
-module.exports = function _flatten(vals) {
-    return _reduce(function(accumList, x) {
-        return _is('Array', x)
-            ? _flatten(_concat(accumList, x))
-            : _concat(accumList, [ x ]);
-    }, [], vals);
+module.exports = function _flatten(values) {
+    return _reduce(function(flatList, value) {
+        return _is('Array', value)
+            ? _flatten(_concat(flatList, value))
+            : _concat(flatList, [ value ]);
+    }, [], values);
 };

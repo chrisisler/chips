@@ -2,9 +2,11 @@ var _tail = require('./_tail');
 var _reduce = require('./_reduce');
 
 /**
- * A variadic (N-ary) function composing the supplied functions in order.
- * Pipe takes the output of the first function, and feeds that result as the
- * input to the next function.
+ * Takes N functions as arguments and _returns a function_ that behaves
+ * equivalent to all provided functions in the order they are given. In other
+ * words, `pipe` is a variadic (N-ary) function which composes the supplied
+ * functions in order. The output of the first function is 'piped' as the input
+ * to the next function.
  *
  * @example var getAgeOver30 = (a) => a.age > 30;
  * @example var getNames = (a) => a.name;

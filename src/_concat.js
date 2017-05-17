@@ -5,6 +5,7 @@ var _reduce = require('./_reduce');
 
 /**
  * Merges the two given items (in the order they're supplied).
+ * Items provided must be of the same type (Array or String).
  *
  * @example C.concat([ 1, 2 ], [ 3, 4 ]); //=> [ 1, 2, 3, 4 ]
  * @example C.concat('dogs', ' and cats'); //=> 'dogs and cats'

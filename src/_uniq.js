@@ -7,11 +7,13 @@ var _isIn = require('./_isIn');
  *
  * @example C.uniq([ 1, 2, 3, 3, 3, 4 ]); //=> [ 1, 2, 3, 4 ]
  *
- * @param {Array[*]} vals - A list of values.
- * @returns {Array[*]} - List of the non-duplicate values in `vals`.
+ * @param {Array[*]} values - A list of values of any type.
+ * @returns {Array[*]} - List of the non-duplicate values in `values`.
  */
-module.exports = function _uniq(vals) {
-    return _reduce(function(uniqs, x) {
-        return _isIn(uniqs, x) ? uniqs : _concat(uniqs, [ x ]);
-    }, [], vals);
+module.exports = function _uniq(values) {
+    return _reduce(function(uniqValues, value) {
+        return _isIn(uniqValues, value)
+            ? uniqValues
+            : _concat(uniqValues, [ value ]);
+    }, [], values);
 };
