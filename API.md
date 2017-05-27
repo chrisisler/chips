@@ -125,6 +125,16 @@ Returns true if the predicate returns true N times.
 C.nPass(3, (val, i) => val % 2 === 1, [ 1, 2, 3, 4, 5 ]); //=> true
 ```
 
+#### C.partial(fn, fnArgs)
+Given an function and a list of that functions arguments, returns a function
+that will produce the result of calling the given function with the supplied
+arguments.
+```javascript
+C.partial((x, y) => x + y, [ 3, 4 ])(); //=> 7
+C.partial((x, y) => x + y)([ 3, 4 ])(); //=> 7
+C.partial(typeof (x, y) => x + y)([ 3 ]); //=> 'function'
+```
+
 #### C.pipe()
 Takes N functions as arguments and _returns a function_ that behaves
 equivalent to all provided functions in the order they are given. In other

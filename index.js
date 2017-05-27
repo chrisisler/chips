@@ -14,6 +14,7 @@ module.exports = {
     map: require('./src/_map'),
     mergeAllBy: require('./src/_mergeAllBy'),
     nPass: require('./src/_nPass'),
+    partial: require('./src/_partial'),
     pipe: require('./src/_pipe'),
     prop: require('./src/_prop'),
     reduce: require('./src/_reduce'),
