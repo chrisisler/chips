@@ -1,13 +1,11 @@
 var _curry2 = require('./util/_curry2');
 var _map = require('./_map');
-var _flatten = require('./_flatten');
+var _flattenOnce = require('./_flattenOnce');
 var _pipe = require('./_pipe');
-
-// TODO: Should this be a flattenOnce like in src/_zipBy instead of
-// recursively stamping out all sub-lists?
 
 /**
  * Returns the recursively flattened result of applying a function to a list.
+ * Allows to return multiple values from a function `fn`.
  *
  * @example C.flatMap(x => [ x, ln(x) ], [ 1, e ]); //=> [ 1, 0, e, 1 ]
  * @example C.flatMap(x => [ x, x * x ], [ 3, 4 ]); //=> [ 3, 9, 4, 16 ]
@@ -17,5 +15,5 @@ var _pipe = require('./_pipe');
  * @returns {Array[*]} - The equivalent of: `values.map(fn).pick()`
  */
 module.exports = _curry2(function _flatMap(fn, values) {
-    return _pipe(_map, _flatten)(fn, values);
+    return _pipe(_map, _flattenOnce)(fn, values);
 });

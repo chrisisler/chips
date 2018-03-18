@@ -10,6 +10,7 @@ var _reduce = require('./_reduce');
  * @example C.concat([ 1, 2 ], [ 3, 4 ]); //=> [ 1, 2, 3, 4 ]
  * @example C.concat('dogs', ' and cats'); //=> 'dogs and cats'
  *
+ * @type [Any] -> [Any] -> [Any]
  * @param {Array[*]|String} a
  * @param {Array[*]|String} b
  * @returns {Array[*]|String} - The concatenated result.
@@ -23,9 +24,9 @@ module.exports = _curry2(function _concat(a, b) {
     } else if (_is('Function', a.concat)) {
         return a.concat(b);
     } else {
-        return _reduce(function(accumList, elem) {
-            accumList[accumList.length] = elem;
-            return accumList;
+        return _reduce(function(accList, elem) {
+            accList[accList.length] = elem;
+            return accList;
         }, a, b);
     }
 });

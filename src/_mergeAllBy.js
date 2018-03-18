@@ -6,7 +6,7 @@ var _filter = require('./_filter');
 var _pipe = require('./_pipe');
 
 // NOTE: Double-slash comments are used here so this functions docs/comments
-// are not parsed and included by the scripts/generateAPIDocs script.
+// are not parsed and included by the `scripts/generateAPIDocs` script.
 //
 // Private helper function for mapping over a list and removing falsy values.
 //

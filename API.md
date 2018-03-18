@@ -211,8 +211,8 @@ C.zipBy(null, [ 1, 3, 5 ], [ 2, 4, 6 ]); //=> [ 1, 2, 3, 4, 5 ,6 ]
 ```
 
 #### C.zipObjBy(fn, keys, values)
-Returns a new object by zipping a list of `keys` with a function, `fn`,
-which is applied to a list of `values` and `keys`.
+Returns a new object by zipping a list of Strings with a function that
+which is applied to a list of values.
 Note: The length of returned list is equal to the length of the `keys` list.
 ```javascript
 C.zipObjBy(v => v / 2, ['k1', 'k2'], [4, 6]); //=> { k1: 2, k2: 3 }

@@ -17,6 +17,6 @@ module.exports =  _curry3(function _alterProp(key, fn, obj) {
         throw new Error('Cannot alter an empty object');
     }
     var updatedProp = {};
-    updatedProp[key] = fn(obj[key]);
+    updatedProp[key] = fn(obj[key], key);
     return _assign({}, obj, updatedProp);
 });

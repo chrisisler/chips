@@ -8,6 +8,7 @@ module.exports = {
     filter: require('./src/_filter'),
     flatMap: require('./src/_flatMap'),
     flatten: require('./src/_flatten'),
+    flattenOnce: require('./src/_flattenOnce'),
     isIn: require('./src/_isIn'),
     majority: require('./src/_majority'),
     majorityPass: require('./src/_majorityPass'),

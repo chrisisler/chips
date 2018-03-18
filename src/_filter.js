@@ -12,6 +12,7 @@ var _concat = require('./_concat');
  * @example C.filter(x => x >= 3, [ 1, 2, 3 ]); //=> [ 3 ]
  * @example C.filter(x => x === x.toUpperCase(), 'FooBar'); //=> 'FB'
  *
+ * @type (a, Number|String -> Boolean) -> a -> a
  * @param {Function(*, Number|String) -> Boolean} predicate - Returns true or
  *                             false to retain/reject each value, respectively.
  * @param {Array[*]|Object|String} item - Some data to filter through.
