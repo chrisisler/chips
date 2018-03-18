@@ -3,22 +3,25 @@ var _curry3 = require('./util/_curry3');
 var _slice = require('./util/_slice');
 
 /**
- * Returns a new function that, when called with a subset of the original
- * functions arguments, returns a new function.
+ * Returns a new function that, when optionally called with a subset of the
+ * original functions arguments, returns a new function.
  * See `C.pipe` for an example of how currying works.
  *
- * @example C.curry((a, b, c, d) => a + b + c + d)(1)(2)(3)(5); //=> 17
- * @example C.curry((a, b, c) => a + b + c)(1)(2)(3); //=> 6
+ * @example C.curry((a, b, c, d) => a + b + c + d)(1, 2)(3)(5); //=> 17
+ * @example C.curry((a, b, c) => a + b + c)(1)(2, 3); //=> 6
  * @example C.curry((a, b) => a + b)(1)(2); //=> 3
  *
- * @param {Function(*, *, ..., *) -> *} fn - N-ary function to curry.
- * @returns {Function(*)(*)(...)(*) -> *}
+ * @type (Any, ..., Any -> Any) -> (Any, ..., Any -> Any) -> ... -> Any
+ * @param {Function(Any, ..., Any) -> Any} fn - N-ary function to curry.
+ * @returns {Function(Any)(...)(Any) -> Any}
  */
 module.exports = function _curry(fn) {
     switch (fn.length) {
         case 2: return _curry2(fn);
         case 3: return _curry3(fn);
         default: return function() {
+            // console.log('fn.length is:', fn.length)
+            // console.log('arguments.length is:', arguments.length)
             return fn.length === arguments.length
                 ? fn.apply(this, arguments)
                 : autoCurry(fn, arguments);

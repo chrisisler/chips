@@ -2,10 +2,10 @@ var _curry2 = require('./util/_curry2');
 var _reduce = require('./_reduce');
 
 /**
- * Returns the result of applying `fn` over all values in `item`.
+ * Returns the result of applying `fn` over all values in `x`.
  * Returns a new function that, when called, applies its arguments to `fn` and
- * `item`, in order.
- * If `item` is a function, a new function is returned which composes both
+ * `x`, in order.
+ * If `x` is a function, a new function is returned which composes both
  * functions.
  *
  * @example C.map((v, k) => v + k, { a: 1 }); //=> { a: 'a1' }
@@ -16,30 +16,30 @@ var _reduce = require('./_reduce');
  * @example C.map(x => x * 2, 100); //=> 200
  *
  * @param {Function(*, Number|String) -> *} fn - Transforms `item`.
- * @param {Array[*]|Object|String|Function} item
- * @returns {Array[*]|Object|String|Function}
+ * @param {Array[*]|Object|String|Function} x - Value that can be mapped over.
+ * @returns {*} - The mapped result.
  */
-module.exports = _curry2(function _map(fn, item) {
-    switch (Object.prototype.toString.call(item)) {
+module.exports = _curry2(function _map(fn, x) {
+    switch (Object.prototype.toString.call(x)) {
         case '[object Array]':
             return _reduce(function(newList, val, index) {
                 newList[newList.length] = fn(val, index);
                 return newList;
-            }, [], item);
+            }, [], x);
         case '[object Object]':
             return _reduce(function(newObj, key) {
-                newObj[key] = fn(item[key], key);
+                newObj[key] = fn(x[key], key);
                 return newObj;
-            }, {}, Object.keys(item));
+            }, {}, Object.keys(x));
         case '[object String]':
             return _reduce(function(newStr, character, index) {
                 return newStr + fn(character, index);
-            }, '', item);
+            }, '', x);
         case '[object Function]': // Pipe the functions.
             return function() {
-                return item(fn.apply(this, arguments));
+                return x(fn.apply(fn, arguments));
             };
         default:
-            throw new TypeError('Unsupported type for item.');
+            throw new TypeError('Unsupported type for second parameter.');
     }
 });

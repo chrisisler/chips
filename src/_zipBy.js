@@ -1,9 +1,5 @@
 var _curry3 = require('./util/_curry3');
-var _concat = require('./_concat');
-var _accum = require('./_accum');
-
-// A function which flattens a given list by one-dimension (non-recursively).
-var flattenOnce = _accum(_concat);
+var _flattenOnce = require('./_flattenOnce');
 
 /**
  * Returns a new list by applying the given function to each equally-indexed
@@ -30,10 +26,8 @@ module.exports = _curry3(function _zipBy(fn, xValues, yValues) {
     var result = Array(len);
     var index = 0;
     while (index < len) {
-        result[index] = fn(xValues[index], yValues[index]);
+        result[index] = fn(xValues[index], yValues[index], index);
         index += 1;
     }
-    return doFlatZip === true
-        ? flattenOnce(result)
-        : result;
+    return doFlatZip ? _flattenOnce(result) : result;
 });

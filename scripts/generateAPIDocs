@@ -23,7 +23,7 @@ getAPIHeader() {
     local file="${1}"
     local fileNoExt="${2}"
     local params="$(cat "${file}" | grep "module.exports" | sed -e 's/^.*function //g' -e 's/ {$//g' -e 's/_[a-z0-9A-Z]*//g')"
-    local APIHeader="#### C.${fileNoExt}${params}"
+    local APIHeader="#### \`C.${fileNoExt}${params}\`"
     printf "%s" "${APIHeader}"
 }
 

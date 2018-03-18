@@ -8,6 +8,7 @@ var _filter = require('./_filter');
  *
  * @example C.disJoin([getEvens, getOdds], [1, 2, 3, 4]); //=> [[2, 4], [1, 3]]
  *
+ * @type Function -> [a] -> [[a]]
  * @param {Array[Function(*) -> *]} predicates - A list of Boolean functions.
  * @param {Array[*]} values - A list of values of any type.
  * @returns {Array[Array[*]]} - A list of lists of values of any type.
