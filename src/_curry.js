@@ -20,7 +20,9 @@ module.exports = function _curry(fn) {
         case 2: return _curry2(fn);
         case 3: return _curry3(fn);
         default: return function() {
-            return fn.length >= arguments.length
+            // console.log('fn.length is:', fn.length)
+            // console.log('arguments.length is:', arguments.length)
+            return fn.length === arguments.length
                 ? fn.apply(this, arguments)
                 : autoCurry(fn, arguments);
         };
